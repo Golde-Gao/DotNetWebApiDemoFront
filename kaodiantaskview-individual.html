@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/kaodiantaskview.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./kaodiantaskview.html">全学科试题知识点测试平台-考点任务详情</a>
+            <ul class="layui-nav layui-layout-left">
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body">
+            <div class="layui-row5">
+                <div class="layui-col-xs5" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">任务名称</div>
+                        <div class="layui-card-body">
+                            英语篇章类试题主题测试0917
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs1" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">任务学科</div>
+                        <div class="layui-card-body">
+                            英语
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-xs1" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">任务状态</div>
+                        <div class="layui-card-body">
+                            创建中
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs1" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">任务题量</div>
+                        <div class="layui-card-body">
+                            899
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs1" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">已创建</div>
+                        <div class="layui-card-body">
+                            765
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs2" style="padding:7px;">
+                    <div class="layui-card">
+                        <div class="layui-card-header">创建时间</div>
+                        <div class="layui-card-body">
+                            2021-03-05 09:28:37
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs1" style="padding:7px;">
+                    <div class="layui-card" style="margin: 18px;text-align: right;">
+                        <button id="gotest" class="layui-btn layui-btn-normal layui-btn-sm ">进入测试</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-row">
+                <div class="layui-col-xs6">
+                    <div class="layui-row">
+                        <div class="layui-card">
+                            <div class="layui-card-header">分题型综合指标统计图</div>
+                            <div>
+                                <div id="chart-overview-rate" style="margin:auto;width:600px; height:400px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-row">
+                        <div class="layui-card">
+                            <div class="layui-card-header">综合数量统计图</div>
+                            <div>
+                                <div id="chart-overview-count" style="margin:auto;width:600px; height:260px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © lancoo
+        </div>
+    </div>
+
+    <script type="text/html" id="side-bar1">
+        <a class="layui-btn layui-btn-xs" lay-event="lookover">查看</a>
+    </script>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/echarts/echarts.js"></script>
+<script src="js/userinfo.js"></script>
+<script src="js/kaodiantaskview-individual.js"></script>
+
+</html>

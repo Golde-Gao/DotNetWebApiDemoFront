@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/zuixinResultDetail.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./zuixinResultDetail.html">最新识别指标统计详情</a>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body" style="padding: 0px 1%;bottom: 0px;padding-top: 10px;">
+            <div class="" style="width: 100%;">
+                <div style="text-align: right;">
+                    <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" id="button-createtask">+新建任务</button>
+                </div>
+                <table id="table-latest" lay-filter="table-latest"> </table>
+                <div style="text-align: right;">
+                    统计时间：2021-06-20 10:47:55
+                </div>
+            </div>
+
+            <script type="text/html" id="dingweishiti">
+                <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="dingweicuowu">定位错识别试题</a>
+                <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="dingweiyilou">定位漏识别试题</a>
+                <a class="layui-btn layui-btn-xs" lay-event="leixingdetail">知识点类型详情</a>
+            </script>
+        </div>
+    </div>
+    <div id="div-createtask" style="display: none;padding: 20px;">
+        <div>
+            题型：<span id="new-tixing"></span>
+        </div>
+        <div>
+            题量：<span id="new-tiliang"></span>
+        </div>
+        <div>
+            任务分配：
+        </div>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/zuixinResultDetail.js'></script>
+
+</html>

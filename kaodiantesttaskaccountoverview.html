@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' href='css/navigation.css' media='all'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./kaodiantesttaskaccountoverview.html">全学科试题知识点测试平台-任务试题详情</a>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item">
+                    <b style="font-weight: bold;color: rgb(241, 99, 175);">任务名称：</b> 语文考点测试任务20210606
+                </li>
+                <li class="layui-nav-item" style="width: 40px;"></li>
+            </ul>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div id="display-area" style="width: 96%;margin: auto;">
+
+                <div class="layui-row search-bar">
+                    <form class="layui-form" action="" lay-filter="task-query">
+                        <div class="layui-col-xs1" style="padding:7px;">
+                            <input type="text" name="s_testcount" lay-verify="title" autocomplete="off" placeholder="试题ID" title="精确检索：xxx  或范围检索：xxx-yyy" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs1" style="padding:7px;">
+                            <!-- <form class="layui-form" action="" lay-filter="task-query"> -->
+                            <div class="layui-form-item" style="margin: auto;">
+                                <div class="layui-input-block" style="margin: auto;">
+                                    <select id="s_subject" name="s_subject" lay-filter="subject" memo="这里后边要用cookie记录以下，记住用户上一次选的学科信息，在这里加载">
+                                <option value="">审核状态</option>
+                                <option value="100">已审核</option>
+                                <option value="102">未审核</option>
+                                <option value="3">试题错误</option>
+                                <option value="4">待查</option>
+                                     </select>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                        <div class="layui-col-xs1" style="padding:7px;">
+                            <!-- <form class="layui-form" action="" lay-filter="task-query"> -->
+                            <div class="layui-form-item" style="margin: auto;">
+                                <div class="layui-input-block" style="margin: auto;">
+                                    <select name="s_status" lay-filter="taskstatus" memo="数据库读取的方式加载">
+                                        <option value="">核心考点综合情况</option>
+                                <option value="100">存在错识别</option>
+                                <option value="101">存在漏识别</option>
+                                <option value="102">完全识别正确</option>
+                                <option value="103">未识别到任何考点</option>
+                                     </select>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                        <div class="layui-col-xs1" style="padding:7px;">
+                            <!-- <form class="layui-form" action="" lay-filter="task-query"> -->
+                            <div class="layui-form-item" style="margin: auto;">
+                                <div class="layui-input-block" style="margin: auto;">
+                                    <select name="s_status" lay-filter="taskstatus" memo="数据库读取的方式加载">
+                                        <option value="">非核心考点综合情况</option>
+                                <option value="100">存在错识别</option>
+                                <option value="101">存在漏识别</option>
+                                <option value="102">完全识别正确</option>
+                                <option value="103">未识别到任何考点</option>
+                                     </select>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                        <div class="layui-col-xs2" style="padding:7px;">
+                            <div class="layui-form-item" style="margin: auto;">
+                                <div class="layui-inline" style="width: 100%;">
+                                    <div class="layui-input-inline" style="width: 100%;">
+                                        <input type="text" name="s_time" class="layui-input" id="daterangeselect" autocomplete="off" placeholder="操作时间">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs5" style="padding:7px;">
+                            <input type="text" name="s_memo" lay-verify="title" autocomplete="off" placeholder="试题信息(可输入任何试题文本信息进行检索)" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs1" style="padding:7px;;text-align: right;">
+                            <!-- <form class="layui-form" action="" lay-filter="task-query"></form> -->
+                            <button type="submit" lay-filter="btn-search" id="btn-search" class="layui-btn layui-btn-normal layui-btn-sm ">
+                                检&nbsp;索
+                            </button>
+                            <!-- </form> -->
+                        </div>
+                    </form>
+
+                </div>
+                <div id="table-title" style="text-align: center;font-size:large;"></div>
+                <table id="paging-table" lay-filter="paging-table"> </table>
+                <div id="paging"> </div>
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © lancoo
+        </div>
+    </div>
+    <script type="text/html" id="side-bar1">
+        <a class="layui-btn layui-btn-xs" lay-event="lookover">查看</a>
+    </script>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/kaodiantesttaskaccountoverview.js'></script>
+
+</html>

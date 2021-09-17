@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/zhishidianleixingDetail.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <span class="layui-logo">全学科试题知识点测试平台——<span style="font-size: 15px;">按题型诊断(<span id="div-showtixing"></span>)</span>
+            </span>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body" style="padding: 0px 1%;bottom: 0px;padding-top: 10px;">
+            <div class="" style="width: 100%;">
+                <div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs5">
+                            <div style="font-weight: bold;">
+                                <!-- 统计时间：2021-06-20 10:47:55 -->
+                            </div>
+                        </div>
+                        <div class="layui-col-xs12">
+                            <div class="layui-row">
+                                <div class="layui-col-xs10">
+                                    <!-- 测试总量：333333；错识别题量：111111；漏识别题量：4232 -->
+                                </div>
+                                <div class="layui-col-xs12" style="text-align: right;">
+                                    <!-- <button type="button " class="layui-btn layui-btn-sm layui-btn-normal " id="button-createtask">+新建任务</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs5">
+                            <div>
+                                <div id="chart-kaodianfenlei" class="chart-left" style="height: 39vh;width: 100%;margin-top: 10px;margin-bottom: 15px;">
+
+                                </div>
+                                <div id="chart-kaodianfenlei2" class="chart-left" style="height: 39vh;width: 100%;margin-top: 20px;margin-bottom: 15px;">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs7">
+                            <div style="margin: 20px 1px;">
+                                <table id="table-latest" lay-filter="table-latest"> </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <script type="text/html" id="tixingdingwei">
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="dingweicuowu">
+                    定位错识别
+            </button>
+                <button class="layui-btn layui-btn-sm layui-btn-warm" lay-event="dingweiyilou">
+                定位漏识别
+        </button>
+            </script>
+        </div>
+    </div>
+    <div id="div-createtask" style="display: none;padding: 10px 10px;">
+        <div class="layui-row">
+            <div class="layui-col-xs7">
+                <div class="popup-task">
+                    题型：<span id="new-tixing"></span>
+                </div>
+                <div class="popup-task">
+                    知识点类型：<span id="new-zhishidianType"></span>
+                </div>
+                <div class="popup-task">
+                    错识别题量：<span id="new-tiliang-wrong"></span>
+                </div>
+                <div class="popup-task">
+                    漏识别题量：<span id="new-tiliang-lose"></span>
+                </div>
+            </div>
+            <div class="layui-col-xs5">
+                <div class="popup-task">
+                    <form class="layui-form" action="">
+                        <select name="" lay-filter="delect-problemType" memo="">
+                    <option value="wrong">错识别</option>
+                    <option value="lose">漏识别</option>
+                </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin:10px 20px;font-family: kaiti; font-size: large;color:red">
+            注意：错识别和漏识别只能选一个，不能同时测试。
+        </div>
+
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/echarts/echarts.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/zhishidianleixingDetail.js'></script>
+
+</html>

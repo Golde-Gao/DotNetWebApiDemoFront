@@ -1,0 +1,13 @@
+.layui-card-header {
+    border-bottom: forestgreen solid 3px;
+    font-weight: bold;
+}
+
+.layui-card-body {
+    border: rgb(248, 243, 243) solid 1px;
+}
+
+.layui-card-header {
+    line-height: unset;
+    height: unset;
+}

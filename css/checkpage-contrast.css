@@ -1,0 +1,365 @@
+.top-bar {
+    margin: 0 12px;
+}
+
+.check-item {
+    margin: 2px 4px;
+    padding: 2px 10px;
+    font-size: medium;
+    border: rgb(172, 172, 172) 1px solid;
+    display: inline-block;
+}
+
+.check-item:hover {
+    cursor: pointer;
+    background-color: rgb(225, 255, 234);
+}
+
+.right-top-tihao:hover {
+    background: rgb(56, 255, 66);
+    cursor: pointer;
+}
+
+.right-top-tihao:nth-child(2n) {
+    background: rgb(225, 255, 234);
+}
+
+.right-top-tihao {
+    padding: 7px 0px;
+    font-size: small;
+    width: 100%;
+    display: inline-block;
+}
+
+.right-top-tihao:nth-child(2n) {
+    background: rgb(225, 255, 234);
+}
+
+.right-top-tihao:hover {
+    background: rgb(56, 255, 66);
+    cursor: pointer;
+}
+
+.knowledge-content {
+    margin-bottom: 5px;
+}
+
+.button-shitilist:hover {
+    cursor: Pointer;
+}
+
+.button-shitilist {
+    height: 50px;
+    padding-top: 10px;
+    display: inline-block;
+}
+
+#button-shitilist-hide {
+    display: none;
+}
+
+.test-item-index {
+    padding: 3px;
+    color: black;
+}
+
+.test-item-index:hover {
+    background: rgb(56, 255, 66) !important;
+    cursor: pointer;
+}
+
+.test-item-index:nth-child(2n+1) {
+    background: rgb(225, 255, 234);
+}
+
+.color-explain {
+    display: inline-block;
+    margin: 3px 20px 5px 30px;
+    padding: 4px 16px;
+    width: 230px;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.section-quote {
+    padding: 0px;
+    display: none;
+}
+
+.layui-field-title {
+    margin: auto;
+}
+
+#test-item-container {
+    padding: 10px 3px;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    /* width: 180px; */
+}
+
+.new-point {
+    background-color: lightgoldenrodyellow;
+    font-weight: bold;
+}
+
+.new-point:after {
+    content: "㊉";
+    position: relative;
+    right: -12px;
+    top: -6px;
+    font-weight: bold;
+}
+
+.remove-point {
+    background-color: gainsboro;
+    font-weight: bold;
+}
+
+.remove-point:after {
+    content: "㊀";
+    position: relative;
+    right: -12px;
+    top: -6px;
+    font-weight: bold;
+}
+
+.shenhequote {
+    padding: 0px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 6px;
+    display: block;
+    margin-left: 24px;
+}
+
+.shenhe-mark {
+    width: 10px;
+    display: block;
+    float: left;
+    font-size: 20px;
+}
+
+.shibiezhegnque {
+    border-left: #009688 70px solid;
+}
+
+.shibiecuowu-kaodiancuowu,
+.shibiecuowu-kaochaleixingcuowu,
+.shibiecuowu-zhuticuowu {
+    border-left: red 1px solid;
+}
+
+.shibiecuowu-zhishidiancuowu {
+    border-left: rgba(255, 0, 0, 0.6) 1px solid;
+}
+
+.shibiecuowu-shouldbefeihexin,
+.shibiecuowu-shouldbehexin {
+    border-left: rgba(255, 0, 0, 0.3) 1px solid;
+}
+
+.loushibie-kaodianloushibie,
+.loushibie-zhutilou,
+.loushibie-kaochaleixinglou {
+    border-left: blue 1px solid;
+}
+
+.loushibie-zhishidianloushibe {
+    border-left: rgb(0, 0, 255, 0.6) 1px solid;
+}
+
+.loushibie-weizhizhishidian {
+    border-left: rgba(113, 113, 255, 0.4) 1px solid;
+}
+
+.loushibie-zhishidiantezheng {
+    border-left: rgba(91, 214, 251, 0.8) 1px solid;
+}
+
+.loushibie-shouldbehexin,
+.loushibie-shouldbefeihexin {
+    border-left: rgb(3, 184, 240) 1px solid;
+}
+
+.sub-banner {
+    height: 50px;
+    padding: 6px;
+    background-color: aquamarine;
+}
+
+.tihao-click {
+    text-decoration: underline;
+}
+
+.legend-title {
+    margin-bottom: 3px;
+}
+
+.layui-header {
+    z-index: 10000000;
+}
+
+.layui-progress-text {
+    color: white;
+}
+
+.layui-logo {
+    width: auto !important;
+}
+
+#progress-control {
+    /* width: 96%; */
+    height: 76px;
+    margin: auto;
+    padding: 0 15px;
+    /* border-top-left-radius: 4px;
+    border-top-right-radius: 4px; */
+    background-color: #333333;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    text-align: center;
+    z-index: 0;
+}
+
+#task-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    color: #009688;
+    font-size: 16px;
+}
+
+.layui-elem-field legend {
+    margin-left: 0px;
+}
+
+#history-content {
+    display: none;
+    height: 40vh;
+    width: 240px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: black solid 1px;
+    padding: 10px;
+    background-color: floralwhite;
+}
+
+#history-content-title {
+    display: none;
+    height: 20px;
+    width: 240px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: rgb(255, 0, 0) solid 1px;
+    padding: 10px;
+    background-color: azure;
+    z-index: 100000;
+}
+
+.history-minus-icon {
+    /* border: grey 7px solid;
+    border-radius: 7px;
+    height: 0px;
+    width: 0px;
+    display: inline-block;
+    right: 0px;
+    top: 0px;
+    color: rgb(172, 172, 172); */
+}
+
+.history-minus {
+    color: rgb(199, 199, 199);
+    border-color: rgb(230, 230, 230);
+}
+
+.history-add-icon {
+    color: rgb(0, 255, 128);
+    font-weight: bold;
+}
+
+.history-add {
+    /* color: rgb(228, 56, 56); */
+}
+
+.history-wrong {
+    border-color: rgb(255, 167, 167);
+}
+
+.history-lose {
+    border-color: rgb(139, 139, 255);
+}
+
+#topduibibutton {
+    height: 28px;
+    line-height: 28px;
+    padding: 0px 8px;
+}
+
+.text-show {
+    text-decoration: underline;
+    margin-right: 15px;
+}
+
+.currenttihao {
+    background: tomato;
+}
+
+.shenhequote-select {
+    background-color: rgb(255, 192, 74);
+}
+
+.layui-table-cell {
+    height: unset;
+    line-height: unset;
+}
+
+thead tr {
+    background-color: #009688 !important;
+}
+
+thead {
+    color: white !important;
+}
+
+.check-area-title {
+    font-size: large;
+    font-family: kaiti;
+}
+
+.check-area-title-hexin {
+    color: tomato;
+}
+
+.button-bottom-div {
+    position: fixed;
+    right: 1%;
+    z-index: 10000;
+}
+
+.ratioData {
+    text-decoration: underline;
+    padding: 1px 6px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* border-radius: 7px; */
+    background-color: #352742;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #bebcbc;
+    border-radius: 3px;
+}

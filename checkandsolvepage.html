@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>考点&知识点</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/checkpage.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+
+            <a class="layui-logo" href="./checkpage.html">试题审核(查看)</a>
+            <ul class="layui-nav  layui-layout-left">
+                <li class="layui-nav-item layui-this top-bar">
+                    <div class="button-shitilist" id="button-shitilist-show">SHOW LIST</div>
+                    <div class="button-shitilist" id="button-shitilist-hide" style="display: none;">HIDE LIST</div>
+                </li>
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;">试题SIZE</a>
+                    <dl class="layui-nav-child">
+                        <dd><a class="a-font-size-shiti" style="font-size: unset;">unset</a> </dd>
+                        <dd><a class="a-font-size-shiti" style="font-size: smaller;">smaller</a> </dd>
+                        <dd><a class="a-font-size-shiti" style="font-size: small;">small</a> </dd>
+                        <dd><a class="a-font-size-shiti" style="font-size: medium;">medium</a> </dd>
+                        <dd><a class="a-font-size-shiti" style="font-size: large;">large</a> </dd>
+                        <dd><a class="a-font-size-shiti" style="font-size: x-large;">x-large</a> </dd>
+                    </dl>
+                </li>
+
+            </ul>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;">考点SIZE</a>
+                    <dl class="layui-nav-child">
+                        <dd><a class="a-font-size-kaodian" style="font-size: unset;">unset</a> </dd>
+                        <dd><a class="a-font-size-kaodian" style="font-size: smaller;">smaller</a> </dd>
+                        <dd><a class="a-font-size-kaodian" style="font-size: small;">small</a> </dd>
+                        <dd><a class="a-font-size-kaodian" style="font-size: medium;">medium</a> </dd>
+                        <dd><a class="a-font-size-kaodian" style="font-size: large;">large</a> </dd>
+                        <dd><a class="a-font-size-kaodian" style="font-size: x-large;">x-large</a> </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;">统计信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a>本任务情况</a> </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;">说明书</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a id="color-means">颜色表示什么</a>
+                        </dd>
+                        <dd><a>页面怎么操作</a> </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+        <div class="side-memu" style="display: none;">
+            <ul class="layui-nav layui-nav-tree  layui-nav-side" id="test-item-container" lay-filter="test" style="background-color:rgb(58, 54, 54); margin-top: 45px;padding: 10px 3px;text-align: center;width: 180px;">
+                <div class="test-item" style="display: none;">
+                    <div class="layui-row">
+                        <div class="layui-col-xs4">0</div>
+                        <div class="layui-col-xs8">12345676543</div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+        <div class="layui-body" style="bottom: 80px;">
+            <div class="layui-row">
+                <div class="layui-col-xs5">
+                    <div class="layui-row" style="border-bottom: pink solid 1px;height: 33px;margin-top: 8px;">
+                        <div style="font-size: larger;">
+                            <span><b>题型：</b>语言表达题；<b>体裁：</b>现代文阅读；<b>学习阶段：</b>初中；<b>题号：</b>222222222</span>
+                        </div>
+                    </div>
+                    <div id="testoverview" style="overflow-y: auto;border-right: pink solid 1px;">
+                        <b style="display: inline-block; margin-top: 8px;">试题预览</b>
+                        <div id="entity-content" style=" margin: 10px 20px 30px 20px;"></div>
+                    </div>
+                </div>
+                <div class="layui-col-xs7">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">原审核结果</li>
+                            <li>重测结果显示</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div id="origin-area" class="layui-tab-item layui-show">
+                                <div id="tihao-display" style="padding: 0px 30px; border-bottom: pink solid 2px;">
+                                    <span class="tihao">整个试题</span>
+                                    <span class="tihao" style="background: tomato;">题号（1-1）</span>
+                                    <span class="tihao">题号（1-2）</span>
+                                    <span class="tihao">题号（2）</span>
+                                    <span class="tihao">题号（3）</span>
+                                    <span class="tihao">题号（4-1）</span>
+                                    <span class="tihao">题号（4-2）</span>
+                                    <span class="tihao">题号（4-3）</span>
+                                    <span class="tihao">题号（4-4）</span>
+                                    <span class="tihao">题号（4-5）</span>
+                                    <span class="tihao">题号（4-6）</span>
+                                    <span class="tihao">题号（4-7）</span>
+                                    <span class="tihao">题号（4-8）</span>
+                                    <span class="tihao">题号（4-9）</span>
+                                </div>
+                                <div id="checkpage" style="overflow-y:auto;">
+                                    <div id="display-entity" style=" padding:10px 20px;">
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>
+                                                    <b style="color: tomato;">核心考点审核</b>
+                                                    <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                    <i class="layui-icon">&#xe624;</i>
+                                                </button>
+                                                </legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote">识别到核心考点XX个，错识别xx，漏识别xx个，正确识别xx个；【错，且，漏】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:red;">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:orange;">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:orange;">镜中人</span>
+                                                        <span class="knowledge-item" style="background-color:cyan;">这是一个很长长长长长长长长长长长长长长长长长长长长长长长的知识点</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend><b>非核心考点审核</b>
+                                                    <button type="button" id="addfeihexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                    <i class="layui-icon">&#xe624;</i>
+                                                </button></legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote">识别到非核心考点XX个，错识别xx，漏识别xx个，正确识别xx个；【错，且，漏】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:red">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:springgreen">镜中人</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>主题考点</legend>
+                                                <div class="layui-field-box">
+
+                                                    <blockquote class="layui-elem-quote section-quote">识别到主题考点XX个，错识别xx，漏识别xx个，正确识别xx个；【完全】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:red">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">天上星</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">李白</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">西北望，射天狼</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">明月几时有，把酒问青天</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">《西厢记》</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">《归园田居》</span>
+                                                        <span class="knowledge-item" style="background-color:springgreen">镜中人</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>考查类型</legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote "> 识别到主题考点XX个，错识别xx，漏识别xx个，正确识别xx个；【完全】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:lightgrey">人艰不拆</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="retest-area" class="layui-tab-item">
+                                <div id="tihao-display" style="padding: 0px 30px; border-bottom: pink solid 2px;">
+                                    <span class="tihao">整个试题</span>
+                                    <span class="tihao" style="background: tomato;">题号（1-1）</span>
+                                    <span class="tihao">题号（1-2）</span>
+                                    <span class="tihao">题号（2）</span>
+                                    <span class="tihao">题号（3）</span>
+                                    <span class="tihao">题号（4-1）</span>
+                                    <span class="tihao">题号（4-2）</span>
+                                    <span class="tihao">题号（4-3）</span>
+                                    <span class="tihao">题号（4-4）</span>
+                                    <span class="tihao">题号（4-5）</span>
+                                    <span class="tihao">题号（4-6）</span>
+                                    <span class="tihao">题号（4-7）</span>
+                                    <span class="tihao">题号（4-8）</span>
+                                    <span class="tihao">题号（4-9）</span>
+                                </div>
+                                <div id="checkpage" style="overflow-y:auto;">
+                                    <div id="display-entity" style=" padding:10px 20px;">
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>
+                                                    <b style="color: tomato;">核心考点审核</b>
+                                                    <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                    <i class="layui-icon">&#xe624;</i>
+                                                </button>
+                                                </legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote">识别到核心考点XX个，错识别xx，漏识别xx个，正确识别xx个；【错，且，漏】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:lightgrey;">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey;">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey;">镜中人</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend><b>非核心考点审核</b>
+                                                    <button type="button" id="addfeihexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                    <i class="layui-icon">&#xe624;</i>
+                                                </button></legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote">识别到非核心考点XX个，错识别xx，漏识别xx个，正确识别xx个；【错，且，漏】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:lightgrey">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">镜中人</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>主题考点</legend>
+                                                <div class="layui-field-box">
+
+                                                    <blockquote class="layui-elem-quote section-quote">识别到主题考点XX个，错识别xx，漏识别xx个，正确识别xx个；【完全】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:lightgrey">雾里花</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">水中月</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">天上星</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">生而为人，我很抱歉</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">学而时习之</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">无友不如己者</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">董存瑞</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">李白</span>
+                                                        <span class="knowledge-item" style="background-color:lightgrey">镜中人</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="layui-row">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>考查类型</legend>
+                                                <div class="layui-field-box">
+                                                    <blockquote class="layui-elem-quote section-quote "> 识别到主题考点XX个，错识别xx，漏识别xx个，正确识别xx个；【完全】</blockquote>
+                                                    <div class="knowledge-content">
+                                                        <span class="knowledge-item" style="background-color:lightgrey">人艰不拆</span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="progress-control" style="border-bottom: solid 1px red;">
+            <div class="layui-row">
+                <div class="layui-col-xs9">
+                    <div class="layui-progress" lay-showpercent="true" style="margin:20px auto;margin-left: 120px;">
+                        <div class="layui-progress-bar" lay-percent="70%"></div>
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div style="text-align: center;margin:8px auto;">
+                        <button type="button" class="layui-btn layui-btn-xs"><i class="layui-icon"></i></button>
+                        <button type="button" class="layui-btn layui-btn-xs"><i class="layui-icon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-footer">
+
+            <!-- 底部固定区域 -->
+            © lancoo
+        </div>
+    </div>
+    <div id="color-means-popup" style="display: none;margin:10px 20px;">
+        <div>
+            <span class="color-explain" style="background:lightgrey;">亮灰色；lightgrey</span>表示识别正确
+        </div>
+        <div>
+            <span class="color-explain" style="background: red;">红色；red</span>表示识别错误
+        </div>
+        <div>
+            <span class="color-explain" style="background:orange;">橙色；orange</span>表示漏识别（仅考点漏识别）
+        </div>
+        <div>
+            <span class="color-explain" style="background:cyan;">蓝绿色；cyan</span>表示漏识别（考点漏识别，且附带的“知识点识别结果参考”中不存在）
+        </div>
+        <div>
+            <span class="color-explain" style="background:springgreen;">春绿色；springgreen</span>表示漏识别（考点漏识别，且数据库无此知识点）
+        </div>
+    </div>
+    <div id="add-lose-content" style="display: none;">
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">添加数据库知识点</li>
+                <li>添加未知知识点</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-row">
+                        <div class="layui-col-xs10 condition-input">
+                            <input type="text" id="input-knowledge-search" placeholder="知识点检索" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs2 condition-input" style="text-align: right;">
+                            <button type="button" class="layui-btn"><b>检索</b></button>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div id="add-knowledge-search-table">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form" action="">
+                            <label class="layui-form-label">知识点名称</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/moment/moment.js"></script>
+<script src="js/userinfo.js"></script>
+<script src="layui/layui.js"></script>
+<script src="js/xml2json/xml2json.js"></script>
+<script src="js/checkpage.js"></script>
+
+</html>

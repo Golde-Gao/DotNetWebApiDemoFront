@@ -1,0 +1,13 @@
+.chart-left {
+    margin: 40px 2px;
+}
+
+#title-category:hover {
+    cursor: pointer;
+}
+
+.a-tabletitle:hover {
+    color: blue;
+    font-weight: lighter;
+    text-decoration: underline;
+}

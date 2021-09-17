@@ -1,0 +1,23 @@
+.charttable {
+    margin-top: 5px;
+    margin-left: 0px !important;
+    margin-right: 10px;
+}
+
+.set-content {
+    padding-left: 50px;
+}
+
+.button-status-0 {
+    /* 未实现 */
+    background-color: rgb(146, 146, 146);
+}
+
+.button-status-1 {
+    /* 未完全实现 */
+    background-color: rgb(248, 170, 170);
+}
+
+.layui-btn-sm {
+    margin: 4px;
+}

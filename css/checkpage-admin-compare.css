@@ -1,0 +1,266 @@
+.top-bar {
+    margin: 0 12px;
+}
+
+.knowledge-item {
+    margin: 2px 4px;
+    padding: 2px 10px;
+    font-size: medium;
+    border: rgb(172, 172, 172) 1px solid;
+    display: inline-block;
+}
+
+.knowledge-item:hover {
+    cursor: pointer;
+}
+
+.tihao {
+    padding-left: 26px;
+    padding-right: 6px;
+    font-size: unset;
+    width: 70%;
+    font-size: medium;
+    display: inline-block;
+}
+
+.tihao:hover {
+    background: rgb(56, 255, 66);
+    cursor: pointer;
+}
+
+.tihao:nth-child(2n) {
+    background: rgb(225, 255, 234);
+}
+
+.tihao2 {
+    padding: 10px 6px;
+    font-size: small;
+    width: 72%;
+    display: inline-block;
+}
+
+.tihao2:nth-child(2n) {
+    background: rgb(225, 255, 234);
+}
+
+.tihao2:hover {
+    background: rgb(56, 255, 66);
+    cursor: pointer;
+}
+
+.knowledge-content {
+    margin-bottom: 5px;
+}
+
+.button-shitilist:hover {
+    cursor: Pointer;
+}
+
+.button-shitilist {
+    height: 50px;
+    padding-top: 10px;
+    display: inline-block;
+}
+
+#button-shitilist-hide {
+    display: none;
+}
+
+.test-item {
+    padding: 3px;
+    color: black;
+}
+
+.test-item:hover {
+    background: rgb(56, 255, 66) !important;
+    cursor: pointer;
+}
+
+
+/* .test-item:nth-child(2n) {
+    background: rgb(245, 243, 243);
+} */
+
+.test-item:nth-child(2n+1) {
+    background: rgb(225, 255, 234);
+}
+
+.color-explain {
+    display: inline-block;
+    margin: 8px 20px 8px 30px;
+    padding: 8px 16px;
+}
+
+.section-quote {
+    padding: 0px;
+    display: none;
+}
+
+.layui-field-title {
+    margin: auto;
+}
+
+#test-item-container {
+    padding: 10px 3px;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    /* width: 180px; */
+}
+
+.shenhequote {
+    padding: 0px;
+    background-color: rgb(252, 252, 252);
+    margin-bottom: 6px;
+}
+
+.shibiezhegnque {
+    border-left: #009688 70px solid;
+}
+
+.shibiecuowu-kaodiancuowu {
+    border-left: red 30px solid;
+}
+
+.shibiecuowu-zhishidiancuowu {
+    border-left: rgba(255, 0, 0, 0.6) 30px solid;
+}
+
+.liushibie-kaodianloushibie {
+    border-left: blue solid;
+}
+
+.liushibie-zhishidianloushibe {
+    border-left: rgb(0, 0, 255, 0.7) 15px solid;
+}
+
+.liushibie-weizhizhishidain {
+    border-left: rgb(0, 0, 255, 0.5) 15px solid;
+}
+
+.sub-banner {
+    height: 50px;
+    padding: 6px;
+    background-color: aquamarine;
+}
+
+.tihao-click {
+    text-decoration: underline;
+}
+
+.legend-title {
+    margin-bottom: 3px;
+}
+
+.layui-header {
+    z-index: 10000000;
+}
+
+.layui-progress-text {
+    color: white;
+}
+
+.layui-logo {
+    width: auto !important;
+}
+
+#progress-control {
+    /* width: 96%; */
+    height: 76px;
+    margin: auto;
+    padding: 0 15px;
+    /* border-top-left-radius: 4px;
+    border-top-right-radius: 4px; */
+    background-color: #333333;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    text-align: center;
+    z-index: 0;
+}
+
+#task-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    color: #009688;
+    font-size: 16px;
+}
+
+.layui-elem-field legend {
+    margin-left: 0px;
+}
+
+#history-content {
+    display: none;
+    height: 40vh;
+    width: 240px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: black solid 1px;
+    padding: 10px;
+    background-color: floralwhite;
+}
+
+#history-content-title {
+    display: none;
+    height: 20px;
+    width: 240px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: rgb(255, 0, 0) solid 1px;
+    padding: 10px;
+    background-color: azure;
+    z-index: 100000;
+}
+
+.history-minus-icon {
+    /* border: grey 7px solid;
+    border-radius: 7px;
+    height: 0px;
+    width: 0px;
+    display: inline-block;
+    right: 0px;
+    top: 0px;
+    color: rgb(172, 172, 172); */
+}
+
+.history-minus {
+    color: rgb(199, 199, 199);
+    border-color: rgb(230, 230, 230);
+}
+
+.history-add-icon {
+    color: rgb(0, 255, 128);
+    font-weight: bold;
+}
+
+.history-add {
+    /* color: rgb(228, 56, 56); */
+}
+
+.history-wrong {
+    border-color: rgb(255, 167, 167);
+}
+
+.history-lose {
+    border-color: rgb(139, 139, 255);
+}
+
+#topduibibutton {
+    height: 28px;
+    line-height: 28px;
+    padding: 0px 8px;
+}
+
+.text-show {
+    text-decoration: underline;
+    margin-right: 15px;
+}

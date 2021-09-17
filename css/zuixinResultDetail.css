@@ -1,0 +1,63 @@
+#tree-title {
+    text-align: center;
+}
+
+.set-content {
+    padding: 12px 26px 0px 30px;
+}
+
+.layui-field-title {
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+.layui-form-pane .layui-form-label {
+    background-color: #e4e4e4;
+}
+
+.layui-elem-field legend {
+    margin-left: 0px;
+}
+
+#tree-tixing-version-ticai {
+    border: 1px #e4e4e4 solid;
+    border-top: 2px #e4e4e4 solid;
+    height: 300px;
+    padding: 5px 2px 22px 2px;
+}
+
+thead {
+    color: white !important;
+}
+
+thead tr {
+    background-color: #009688 !important;
+}
+
+.layui-form-label {
+    width: 57px;
+}
+
+.layui-input-block {
+    margin-left: 87px;
+}
+
+.select-area-setting:hover {
+    cursor: pointer;
+}
+
+.select-area {
+    border: none;
+    border-bottom: black 1px solid;
+    border-radius: 0px;
+    height: 16px;
+}
+
+.confirm-content {
+    text-align: left;
+}
+
+.confirm-title {
+    text-align: center;
+    margin-bottom: 5px;
+}

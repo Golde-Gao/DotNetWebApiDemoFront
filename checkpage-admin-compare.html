@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>考点&知识点</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="layui_exts/mouseRightMenu/mouseRightMenu.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/checkpage-admin-compare.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div>
+        <div style="display: none; position:fixed;bottom: 140px;right:1%;z-index: 10000000000;" class="banbenduibi">
+            <button type="button" class="layui-btn layui-btn-normal" style="padding: 0px 5px 0px 2px;">  
+                <i class="layui-icon layui-icon-layer" style="margin-right: 0px; font-weight: bold;font-size: x-large;position:relative; top:-5px;">
+                </i>
+                <div style="display: inline-block;padding: 5px 0px;font-size: x-small;">
+                    <div style="line-height: 14px;">版本</div>
+                    <div style="line-height: 14px;">对比</div>
+                </div>
+            </button>
+        </div>
+        <div style="position:fixed;bottom: 90px;right:1%;z-index: 10000000000;">
+            <button type="button" class="layui-btn layui-btn-normal" style="width: 38px;padding: 0 2px;font-size: 5px;">
+                <div style="line-height: 15px;">查看</div>
+                <div style="line-height: 15px;">备注</div>
+            </button>
+        </div>
+    </div>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./checkpage.html" style="line-height: 45px;">
+                <span style="margin-left: 30px;font-size: 18px;">试题审核</span>
+                <span style="font-size:18px;font-family:kaiti;">---2021语文考点测试任务第二次联测（对比分析）</span>
+            </a>
+
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item layui-this top-bar">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">账号信息</a></dd>
+                        <dd> <a id="base-info">基本信息</a></dd>
+                        <dd> <a>试题检索</a></dd>
+                        <dd> <a id="button-setting">设置</a></dd>
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <div class="layui-body" style="bottom: 75px;left: 30px;right: 70px;">
+            <div class="layui-row" style="height: 40px;border-bottom: pink dashed 1px;">
+                <div class="layui-col-xs5">
+                    <blockquote class="layui-elem-quote" style="margin-top: 8px;padding: 0px;padding-left:10px;background-color: transparent;">
+                        <span style="font-size: 16px;font-family:kaiti;text-align: left;">
+                        <b>题型：</b><span class="text-show">语言表达题</span><b>体裁：</b><span class="text-show">现代文阅读</span><b>学习阶段：</b><span class="text-show">初中</span>
+                        </span>
+                    </blockquote>
+                </div>
+                <div class="layui-col-xs7" style="margin-top: 8px;">
+                    <div class="layui-row">
+                        <div class="layui-col-xs9">
+                            <div style="font-family: kaiti;font-size: 16px;text-align:left;padding-left: 10px;">
+                                测试时间：<span class="text-show">2021-04-24 10:30:06</span> 测试人：<span class="text-show">陈瑞</span> <b>（已审核）</b>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs3">
+                            <div style="text-align: right;">
+                                <div style="display:inline-block;margin-right: 20px;font-family: kaiti;font-size: 16px;">
+                                    <b>当前题号：</b>
+                                    <span><b>1-1</b> </span>
+                                </div>
+                            </div>
+                            <!-- <div style="display:inline-block;padding: 0px 7px;font-family: kaiti;font-size: 16px;">
+                                <a href="" class="tihao-click"> <b>上一小题</b> </a>&nbsp;&nbsp;&nbsp;
+                                <a href="" class="tihao-click"> <b>下一小题</b> </a>
+                            </div> -->
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs5 click-hide-tihaolist">
+
+                    <div id="testoverview" style="overflow-y: auto;">
+                        <div id="entity-content" style=" margin: 10px 0px 30px 0px;"></div>
+                    </div>
+                </div>
+                <div class="layui-col-xs7" id="ceshi-area">
+
+                    <div id="checkpage" style="overflow-y:auto;">
+                        <div id="display-entity" style=" padding:10px 10px;">
+                            <div class="layui-row">
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend class="legend-title">
+                                        <b style="color: tomato;font-size: large;font-family: kaiti;">核心考点</b>
+                                        <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+
+                                        <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                            <span class="knowledge-item">雾里花</span>
+                                            <span class="knowledge-item">天上星</span>
+                                            <span class="knowledge-item">无友不如己者</span>
+                                            <span class="knowledge-item">生而为人，我很抱歉</span>
+                                            <span class="knowledge-item">西北望，射天狼</span>
+                                            <span class="knowledge-item">君子不器</span>
+                                            <span class="knowledge-item">乍暖还寒</span>
+                                            <span class="knowledge-item">春水初生</span>
+                                            <span class="knowledge-item">冯唐易老</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" title="识别错误考点（知识点识别错误）">
+                                            <span class="knowledge-item">忠恕之道</span>
+                                            <span class="knowledge-item">慎独</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" title="识别错误考点（知识点识别错误）">
+                                            <!-- <span class="knowledge-item">子贡曰：“如有博施于民而能济众，何如？可谓仁乎？”子曰：“何事于仁，必也圣乎！尧、舜其犹病诸！夫仁者，己欲立而立人，己欲达而达人。能近取譬，可谓仁之方也已。”</span> -->
+                                            <span class="knowledge-item">博闻强识</span>
+                                        </blockquote>
+
+                                        <blockquote class="layui-elem-quote shenhequote liushibie-kaodianloushibie" title="漏识别考点（考点识别过程漏识别）">
+                                            <span class="knowledge-item">君子坦荡荡，小人长戚戚</span>
+                                        </blockquote>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="layui-row" style="margin-top: 25px;">
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend class="legend-title">
+                                        <b style="font-size: large;font-family: kaiti;">非核心考点</b>
+                                        <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+                                        <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                            <span class="knowledge-item">水中月</span>
+                                            <span class="knowledge-item">巧言令色</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" title="识别错误考点（知识点识别错误）">
+                                            <span class="knowledge-item">逝者如斯夫</span>
+                                            <span class="knowledge-item">不舍昼夜</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" title="识别错误考点（知识点识别错误）">
+                                            <span class="knowledge-item">不战而屈人之兵</span>
+                                            <span class="knowledge-item">凄凄惨惨戚戚</span>
+                                        </blockquote>
+
+                                        <blockquote class="layui-elem-quote shenhequote liushibie-kaodianloushibie" title="漏识别考点（考点识别过程漏识别）">
+                                            <span class="knowledge-item">诚信友善</span>
+                                            <span class="knowledge-item">爱国敬业</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote liushibie-zhishidianloushibe" title="漏识别考点（数据库缺少该知识点）">
+                                            <span class="knowledge-item">铺张浪费</span>
+                                            <span class="knowledge-item">指鹿为马</span>
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote liushibie-weizhizhishidain" title="漏识别考点（数据库缺少该知识点）">
+                                            <span class="knowledge-item">扮猪吃虎</span>
+                                            <span class="knowledge-item">偷梁换柱</span>
+                                        </blockquote>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="layui-row" style="margin-top: 25px;">
+                                <div class="layui-col-xs6" style="padding-right:10px;">
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend class="legend-title">
+                                            <b style="font-size: large;font-family: kaiti;">主题</b>
+                                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                <i class="layui-icon">&#xe624;</i>
+                                            </button>
+                                        </legend>
+                                        <div class="layui-field-box">
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确主题知识点">
+                                                <span class="knowledge-item">民可使由之，不可使知之</span>
+                                            </blockquote>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="layui-col-xs6" style="padding-left:40px;">
+                                    <fieldset class="layui-elem-field layui-field-title">
+                                        <legend class="legend-title">
+                                            <b style="font-size: large;font-family: kaiti;">考查类型</b>
+                                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                                <i class="layui-icon">&#xe624;</i>
+                                            </button>
+                                        </legend>
+                                        <div class="layui-field-box">
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确考查类型">
+                                                <span class="knowledge-item">论文考查</span>
+                                                <span class="knowledge-item">道德经考查</span>
+                                            </blockquote>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="popup-rec-history-title" style="display: none;">
+
+        </div>
+
+        <div id="popup-rec-history2" style="display: none;">
+            <div class="click-hide-tihaolist" style="padding:7px;font-size: 12px;height: 70vh;overflow-y: auto;">
+                <div class="layui-row">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend class="legend-title">
+                            <b style="color: tomato;font-size: large;font-family: kaiti;">核心考点</b>
+                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                <i class="layui-icon">&#xe624;</i>
+                            </button>
+                        </legend>
+                        <div class="layui-field-box">
+
+                            <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                <span class="knowledge-item">雾里花</span>
+                                <span class="knowledge-item">天上星</span>
+                                <span class="knowledge-item">无友不如己者</span>
+                                <span class="knowledge-item">生而为人，我很抱歉</span>
+                                <span class="knowledge-item">西北望，射天狼</span>
+                                <span class="knowledge-item  history-wrong">忠恕之道</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 慎独</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 博闻强识</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 乍暖还寒</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 君子不器</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 春水初生</span>
+                                <span class="knowledge-item history-minus" style="display: inline-block;"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 冯唐易老</span>
+                            </blockquote>
+                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" title="识别错误考点（知识点识别错误）">
+                                <span class="knowledge-item">忠恕之道</span>
+                            </blockquote>
+                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" title="识别错误考点（知识点识别错误）">
+                                <span class="knowledge-item history-add"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 父母在，不远游</span>
+                                <span class="knowledge-item history-add"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 游必有方</span>
+                            </blockquote>
+                            <blockquote class="layui-elem-quote shenhequote liushibie-kaodianloushibie" title="漏识别考点（考点识别过程漏识别）">
+                                <span class="knowledge-item">君子坦荡荡，小人长戚戚</span>
+                                <span class="knowledge-item">乍暖还寒</span>
+                                <span class="knowledge-item">君子不器</span>
+                                <span class="knowledge-item">春水初生</span>
+                                <span class="knowledge-item">冯唐易老</span> </blockquote>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-row" style="margin-top: 25px;">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend class="legend-title">
+                            <b style="font-size: large;font-family: kaiti;">非核心考点</b>
+                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                <i class="layui-icon">&#xe624;</i>
+                            </button>
+                        </legend>
+                        <div class="layui-field-box">
+                            <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                <span class="knowledge-item">水中月</span>
+                                <span class="knowledge-item">巧言令色</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 逝者如斯夫</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 不舍昼夜</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 不战而屈人之兵</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 凄凄惨惨戚戚</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 诚信友善</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 爱国敬业</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 指鹿为马</span>
+                            </blockquote>
+                            <blockquote class="layui-elem-quote shenhequote liushibie-zhishidianloushibe" title="漏识别考点（数据库缺少该知识点）">
+                                <span class="knowledge-item">铺张浪费</span>
+                            </blockquote>
+                            <blockquote class="layui-elem-quote shenhequote liushibie-weizhizhishidain" title="漏识别考点（数据库缺少该知识点）">
+                                <span class="knowledge-item">扮猪吃虎</span>
+                                <span class="knowledge-item">偷梁换柱</span>
+                            </blockquote>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-row" style="margin-top: 25px;">
+                    <div class="layui-col-xs6" style="padding-right:10px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend class="legend-title">
+                                <b style="font-size: large;font-family: kaiti;">主题</b>
+                                <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                    <i class="layui-icon">&#xe624;</i>
+                                </button>
+                            </legend>
+                            <div class="layui-field-box">
+                                <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确主题知识点">
+                                    <span class="knowledge-item">民可使由之，不可使知之</span>
+                                </blockquote>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-col-xs6" style="padding-left:40px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend class="legend-title">
+                                <b style="font-size: large;font-family: kaiti;">考查类型</b>
+                                <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                    <i class="layui-icon">&#xe624;</i>
+                                </button>
+                            </legend>
+                            <div class="layui-field-box">
+                                <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确考查类型">
+                                    <span class="knowledge-item">论文考查</span>
+                                    <span class="knowledge-item">道德经考查</span>
+                                </blockquote>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 0px;margin: 2px auto;width: 100%;">
+                <div style="text-align: right;">
+                    <!-- <button type="button" style="margin:4px 10px;" class="layui-btn layui-btn-normal  layui-btn-sm layui-btn-disabled">确认审核</button> -->
+                    <!-- <button type="button" style="margin:12px 20px;" class="layui-btn layui-btn-normal  layui-btn-sm">确认审核</button> -->
+                </div>
+            </div>
+        </div>
+        <div id="popup-rec-history" style="display: none;">
+            <div class="click-hide-tihaolist" style="padding:7px;font-size: 12px;height: 70vh;overflow-y: auto;">
+                <div class="layui-row">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend class="legend-title">
+                            <b style="color: tomato;font-size: large;font-family: kaiti;">核心考点</b>
+                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                <i class="layui-icon">&#xe624;</i>
+                            </button>
+                        </legend>
+                        <div class="layui-field-box">
+
+                            <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                <span class="knowledge-item">雾里花</span>
+                                <span class="knowledge-item">天上星</span>
+                                <span class="knowledge-item">无友不如己者</span>
+                                <span class="knowledge-item">生而为人，我很抱歉</span>
+                                <span class="knowledge-item">西北望，射天狼</span>
+                                <span class="knowledge-item history-wrong">忠恕之道</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 慎独</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 博闻强识</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 乍暖还寒</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 君子不器</span>
+                                <span class="knowledge-item history-minus"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 春水初生</span>
+                                <span class="knowledge-item history-minus" style="display: inline-block;"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 冯唐易老</span>
+                                <span class="knowledge-item history-add"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 父母在，不远游</span>
+                                <span class="knowledge-item history-add"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 游必有方</span>
+                            </blockquote>
+                            <div class="layui-elem-quote section-quote">识别到核心考点XX个，错识别xx，漏识别xx个，正确识别xx个；【错，且，漏】</div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-row" style="margin-top: 25px;">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend class="legend-title">
+                            <b style="font-size: large;font-family: kaiti;">非核心考点</b>
+                            <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                <i class="layui-icon">&#xe624;</i>
+                            </button>
+                        </legend>
+                        <div class="layui-field-box">
+                            <blockquote class="layui-row shenhequote shibiezhegnque" title="识别正确考点">
+                                <span class="knowledge-item">水中月</span>
+                                <span class="knowledge-item">巧言令色</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 逝者如斯夫</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 不舍昼夜</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 不战而屈人之兵</span>
+                                <span class="knowledge-item history-minus history-wrong"><i class="history-minus-icon layui-icon layui-icon-reduce-circle"></i> 凄凄惨惨戚戚</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 诚信友善</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 爱国敬业</span>
+                                <span class="knowledge-item history-add history-lose"><i class="history-add-icon layui-icon layui-icon-add-circle"></i> 指鹿为马</span>
+                            </blockquote>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-row" style="margin-top: 25px;">
+                    <div class="layui-col-xs6" style="padding-right:10px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend class="legend-title">
+                                <b style="font-size: large;font-family: kaiti;">主题</b>
+                                <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                    <i class="layui-icon">&#xe624;</i>
+                                </button>
+                            </legend>
+                            <div class="layui-field-box">
+                                <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确主题知识点">
+                                    <span class="knowledge-item">民可使由之，不可使知之</span>
+                                </blockquote>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-col-xs6" style="padding-left:40px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend class="legend-title">
+                                <b style="font-size: large;font-family: kaiti;">考查类型</b>
+                                <button type="button" id="addhexinkaodian" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                    <i class="layui-icon">&#xe624;</i>
+                                </button>
+                            </legend>
+                            <div class="layui-field-box">
+                                <blockquote class="layui-elem-quote shenhequote shibiezhegnque" title="识别正确考查类型">
+                                    <span class="knowledge-item">论文考查</span>
+                                    <span class="knowledge-item">道德经考查</span>
+                                </blockquote>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 0px;margin: 2px auto;width: 100%;">
+                <div style="text-align: right;">
+                    <!-- <button type="button" style="margin:4px 10px;" class="layui-btn layui-btn-normal  layui-btn-sm layui-btn-disabled">确认审核</button> -->
+                    <button type="button" style="margin:12px 20px;" class="layui-btn layui-btn-normal  layui-btn-sm">确认审核</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div id="progress-control" style="color: white;">
+                <div class="layui-row" style="padding-top:9px;">
+                    <div class="layui-col-xs2" style="text-align: left;padding-top:12px;">
+                        <div style="display: inline-block;">
+                            <div class="button-shitilist" id="button-shitilist-hide">
+                                <i class="layui-icon layui-icon-down" style="font-size: 16px;font-weight: bold;"></i>
+                                <span>试题ID：</span>
+                            </div>
+                            <div class="button-shitilist" id="button-shitilist-show">
+                                <i class="layui-icon layui-icon-up" style="font-size:16px;font-weight: bold;"></i>
+                                <span>试题ID：</span>
+                            </div>
+                            <span style="font-weight: bold;">100000005</span>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs10">
+                        <div class="layui-row">
+                            <div class="layui-col-xs9">
+                                <div class="layui-progress" lay-showpercent="true" lay-filter="shenhe-progress" style=" margin-top:26px;">
+                                    <div class="layui-progress-bar layui-bg-green"></div>
+                                </div>
+                                <div style="text-align: left;">
+                                    <b>审核进度</b>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs3">
+                                <div style="margin:18px auto;padding-left: 30px;text-align: left;">
+                                    <button type="button" class="layui-btn  layui-btn-sm" style="padding: 0 5px;"><i class="layui-icon"></i></button>
+                                    <button type="button" class="layui-btn  layui-btn-sm" style="padding: 0 5px;"><i class="layui-icon"></i></button>
+                                    <!-- <button type="button" class="layui-btn layui-btn-sm">确认审核</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="layui-col-xs2">
+                        <div style="text-align: right;margin-top: 14px;">
+                            <div style="margin-bottom: 4px;"><b>当前准确率：</b><span style="text-decoration: underline;">88.87</span>%</div>
+                            <div><b>当前可识别率：</b><span style="text-decoration: underline;">66.67</span>%</div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="layui-col-xs2">
+                        <div style="text-align: center;margin:18px auto;">
+                            <button type="button" class="layui-btn layui-btn-normal  layui-btn-sm">暂存任务</button>
+                            <button type="button" class="layui-btn layui-btn-normal  layui-btn-sm layui-btn-disabled">提交任务</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="side-memu" style="display: none;">
+        <div class="layui-row" style="border-bottom: tomato 1px solid;">
+            <div class="layui-col-xs4">
+                <div style="height: 20px;padding: 15px 0px 15px 20px;text-align: left;">
+                    <select name="interest" style="width: 90%;">
+                <option value="all">全部</option>
+                <option value="nodifferent">无差异</option>
+                <option value="different"  selected="">有差异</option>
+                </select>
+                </div>
+            </div>
+            <div class="layui-col-xs3">
+                <div style="height: 20px;padding: 15px 0px;text-align: left;">
+                    <select name="interest" style="width: 90%;">
+                <option value="all">全部</option>
+                <option value="checked">已审核</option>
+                <option value="unchecked">未审核</option>
+                </select>
+                </div>
+            </div>
+            <div class="layui-col-xs2">
+                <div style="height: 20px;padding: 15px 4px 15px 0px;text-align: left;">
+                    共<span style="text-decoration: underline;">&nbsp;232&nbsp;</span>题
+                </div>
+            </div>
+            <div class="layui-col-xs3">
+                <div style="height: 20px;padding: 15px 15px;text-align: right;">
+                    <a href=""><i class="layui-icon layui-icon-search"></i>高级</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="test-item-container">
+            <div class="test-item" style="display: none;">
+                <div class="layui-row">
+                    <div class="layui-col-xs4 tihao-index" style="text-align: left;padding-left: 15px;">0</div>
+                    <div class="layui-col-xs8 tihao-content" style="text-align: left;">12345676543</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-tihao-memu" style="display: none;">
+
+        <div id="tihao-display" style="font-family:kaiti;text-align: center;">
+            <span class="tihao">整个试题</span>
+            <span class="tihao" style="background: tomato;">题号（1-1）</span>
+            <span class="tihao">题号（1-2）</span>
+            <span class="tihao">题号（2）</span>
+            <span class="tihao">题号（3）</span>
+            <span class="tihao">题号（4-1）</span>
+            <span class="tihao">题号（4-2）</span>
+            <span class="tihao">题号（4-3）</span>
+            <span class="tihao">题号（4-4）</span>
+            <span class="tihao">题号（4-5）</span>
+            <span class="tihao">题号（4-6）</span>
+            <span class="tihao">题号（4-7）</span>
+            <span class="tihao">题号（4-8）</span>
+            <span class="tihao">题号（4-9）</span>
+        </div>
+
+    </div>
+
+    <div id="side-tihao-memu2" style="display: none;">
+        <div id="tihao-title" style="position: absolute;top: 0px;left: 0px;padding: 10px 15px;border-bottom: green 1px solid;">
+            <span style="font-family: kaiti;font-weight: bold;">题号</span>
+        </div>
+        <div id="tihao-display2" style="font-family:kaiti;text-align: center;margin-top: 40px;overflow-y: auto;">
+            <span class="tihao2">整体</span>
+            <span class="tihao2" style="background: tomato;">1-1</span>
+            <span class="tihao2">1-2</span>
+            <span class="tihao2">2</span>
+            <span class="tihao2">3</span>
+            <span class="tihao2">4-1</span>
+            <span class="tihao2">4-2</span>
+            <span class="tihao2">4-3</span>
+            <span class="tihao2">4-4</span>
+            <span class="tihao2">4-8</span>
+            <span class="tihao2">4-9</span>
+        </div>
+    </div>
+
+    <div id="setting-popup" style="display: none;">
+        <div style="margin:10px 20px;">
+            <div>
+                <span class="color-explain" style="background:#009688;">亮灰色；lightgrey</span>表示识别正确
+            </div>
+            <div>
+                <span class="color-explain" style="background: red;">红色；red</span>表示错识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: pink;">粉色；pink</span>表示错识别（此时，错误的非核心考点可作为核心考点，或错误的核心考点和作为非核心考点）
+            </div>
+            <div>
+                <span class="color-explain" style="background:orange;">橙色；orange</span>表示漏识别（仅考点漏识别）
+            </div>
+            <div>
+                <span class="color-explain" style="background:cyan;">蓝绿色；cyan</span>表示漏识别（考点漏识别，且附带的“知识点识别结果参考”中不存在）
+            </div>
+            <div>
+                <span class="color-explain" style="background:springgreen;">春绿色；springgreen</span>表示漏识别（考点漏识别，且数据库无此知识点）
+            </div>
+        </div>
+
+    </div>
+    <div id="add-lose-content" style="display: none;">
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">添加数据库知识点</li>
+                <li>添加未知知识点</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-row">
+                        <div class="layui-col-xs10 condition-input">
+                            <input type="text" id="input-knowledge-search" placeholder="知识点检索" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs2 condition-input" style="text-align: right;">
+                            <button type="button" class="layui-btn"><b>检索</b></button>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div id="add-knowledge-search-table">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form" action="">
+                            <label class="layui-form-label">知识点名称</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/moment/moment.js"></script>
+<script src="js/userinfo.js"></script>
+<script src="layui/layui.js"></script>
+<script src="layui_exts/mouseRightMenu/mouseRightMenu.js"></script>
+<script src="js/xml2json/xml2json.js"></script>
+<script src="js/checkpage-admin-compare.js"></script>
+
+</html>

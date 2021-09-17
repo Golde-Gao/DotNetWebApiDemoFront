@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="layui_exts/mouseRightMenu/mouseRightMenu.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/checkpage-consumer-general.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <span class="layui-logo" href="" style="line-height: 45px;">
+                <span style="margin-left: 30px;font-size: 18px;">全学科试题知识点测试平台——<span style="font-size: 15px;">问题试题查看</span>——</span><span style="font-size: 14px;color: rgb(167, 255, 195);" id="span-stitle"></span>
+            </span>
+
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">账号信息</a></dd>
+                        <dd> <a id="base-info">基本信息</a></dd>
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-body" style="bottom: 75px;left: 30px;right: 70px;">
+            <div class="layui-row" style="height: 40px;">
+                <div class="layui-col-xs5">
+                    <blockquote class="layui-elem-quote" style="margin-top: 8px;padding: 0px;padding-left:10px;background-color: transparent;">
+                        <div style="font-size: 16px;font-family:kaiti;text-align: left;">
+                            <b>题型：</b><span id="shiti-tixing" class="text-show"></span><b>体裁：</b><span id="shiti-genre" class="text-show"></span><b>学习阶段：</b><span id="shiti-version" class="text-show"></span>
+                            <span id="show-shitiId" style="font-size: large;margin-left: 10px;font-weight: bold;">
+                            
+                            </span>
+                        </div>
+                        <div style="font-size: 16px;font-family:kaiti;text-align: left;">
+                            <b>任务：</b><span id="shiti-task" class="text-show"></span><b>测试账号：</b><span id="shiti-account" class="text-show"></span>
+                        </div>
+
+                    </blockquote>
+                </div>
+                <div class="layui-col-xs7" style="margin-top: 8px;">
+                    <div class="layui-row">
+                        <div class="layui-col-xs9">
+                            <div style="font-family: kaiti;font-size: 16px;text-align:left;padding-left: 10px;">
+                                测试时间：<span class="text-show" id="background-testtime"></span> <b>（</b><b id="background-test-status"></b><b>）</b>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs3" id="tihao-title">
+                            <div style="text-align: right;">
+                                <div style="display:inline-block;margin-right: 20px;font-family: kaiti;font-size: 16px;">
+                                    <span><b id="single-shiti-title"></b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs5">
+                    <div id="testoverview" style="overflow-y: auto;padding-right: 8px;">
+                        <div id="entity-content" style=" margin: 10px 0px 30px 0px;"></div>
+                    </div>
+                </div>
+                <div class="layui-col-xs7">
+                    <div id="background-checkpage" style="overflow-y:auto;">
+                        <div class="div-check-area" style=" padding:10px 10px;">
+                            <div class="layui-row">
+                                <fieldset class="layui-elem-field layui-field-title" id="fieldset-hexin">
+                                    <legend class="legend-title">
+                                        <b class="check-area-title check-area-title-hexin">核心考点</b>
+                                        <button type="button" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+                                        <div> <span class="shenhe-mark"><b>✔</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="background-hexinkaodian" title="识别正确考点">
+                                            </blockquote>
+                                        </div>
+                                        <div><span class="shenhe-mark"><b>⑴</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" id="background-hexinkaodian-wrongReasonKaoDian" title="考点识别过程错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div> <span class="shenhe-mark"><b>⑵</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" id="background-hexinkaodian-wrongReasonZhiShiDian" title="知识点识别过程错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑶</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-shouldbefeihexin" id="background-hexinkaodian-wrongReasonFeiHeXinKaoDian" title="核心考点多识别（考点识别过程错误，这个应该是非核心考点）">
+                                            </blockquote>
+                                        </div>
+
+                                        <div> <span class="shenhe-mark"><b>①</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-kaodianloushibie" id="background-hexinkaodian-loseReasonKaoDian" title="考点识别过程漏识别造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>②</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-zhishidianloushibe" id="background-hexinkaodian-loseReasonZhiShiDian" title="知识点识别过程漏识别造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>③</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-weizhizhishidian" id="background-hexinkaodian-loseReasonZhiShiDianKu" title="知识点库缺少此知识点造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div> <span class="shenhe-mark"><b>④</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-zhishidiantezheng" id="background-hexinkaodian-loseReasonZhiShiDianTeZheng" title="知识点特征错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑤</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-shouldbehexin" id="background-hexinkaodian-loseReasonFeiHeXinKaoDian" title="核心考点漏识别（考点识别过程错误，这个错识别为非核心考点）">
+                                            </blockquote>
+                                        </div>
+
+
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="layui-row" style="margin-top: 25px;">
+                                <fieldset class="layui-elem-field layui-field-title" id="fieldset-feihexin">
+                                    <legend class="legend-title">
+                                        <b class="check-area-title">非核心考点</b>
+                                        <button type="button" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+                                        <div><span class="shenhe-mark"><b>✔</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="background-feihexinkaodian" title="识别正确考点">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑴</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" id="background-feihexinkaodian-wrongReasonKaoDian" title="考点识别过程错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑵</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" id="background-feihexinkaodian-wrongReasonZhiShiDian" title="知识点识别过程错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑶</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-shouldbehexin" id="background-feihexinkaodian-wrongReasonHeXinKaoDian" title="非核心考点多识别（考点识别过程错误，这个应该是核心考点）">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>①</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-kaodianloushibie" id="background-feihexinkaodian-loseReasonKaoDian" title="考点识别过程漏识别造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>②</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-zhishidianloushibe" id="background-feihexinkaodian-loseReasonZhiShiDian" title="知识点识别过程漏识别造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>③</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-weizhizhishidian" id="background-feihexinkaodian-loseReasonZhiShiDianKu" title="知识点库缺少此知识点造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>④</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-zhishidiantezheng" id="background-feihexinkaodian-loseReasonZhiShiDianTeZheng" title="知识点特征错误造成的">
+                                            </blockquote>
+                                        </div>
+
+                                        <div><span class="shenhe-mark"><b>⑤</b></span>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-shouldbefeihexin" id="background-feihexinkaodian-loseReasonHeXinKaoDian" title="非核心考点漏识别（考点识别过程错误，这个错识别为核心考点）">
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="layui-row" style="margin-top: 25px;">
+                                <div class="layui-col-xs6" style="padding-right:10px;">
+                                    <fieldset class="layui-elem-field layui-field-title" id="fieldset-zhuti">
+                                        <legend class="legend-title">
+                                            <b class="check-area-title">主题</b>
+                                            <button type="button" class="layui-btn layui-btn-xs add-lose-zhuti" style="margin-left: 30px;">
+                                                <i class="layui-icon">&#xe624;</i>
+                                            </button>
+                                        </legend>
+                                        <div class="layui-field-box">
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="background-zhuti-correct" title="识别正确主题知识点">
+                                            </blockquote>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhuticuowu" id="background-zhuti-wrong" title="识别错误主题知识点">
+                                            </blockquote>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-zhutilou" id="background-zhuti-lose" title="漏识别主题知识点">
+                                            </blockquote>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="layui-col-xs6" style="padding-left:40px;">
+                                    <fieldset class="layui-elem-field layui-field-title" id="fieldset-kaochaleixing">
+                                        <legend class="legend-title">
+                                            <b class="check-area-title">考查类型</b>
+                                            <button type="button" class="layui-btn layui-btn-xs add-lose-kaochaleixing" style="margin-left: 30px;">
+                                                <i class="layui-icon">&#xe624;</i>
+                                            </button>
+                                        </legend>
+                                        <div class="layui-field-box">
+                                            <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="background-kaochaleixing-correct" title="识别正确考查类型">
+                                            </blockquote>
+                                            <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaochaleixingcuowu" id="background-kaochaleixing-wrong" title="考查类型错识别">
+                                            </blockquote>
+                                            <blockquote class="layui-elem-quote shenhequote loushibie-kaochaleixinglou" id="background-kaochaleixing-lose" title="考查类型漏识别">
+                                            </blockquote>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup-rec-history" style="display: none;">
+            <div style="font-size: 12px;height: 70vh;overflow-y: auto;">
+                <div id="popup-checkpage" style="overflow-y:auto;">
+                    <div class="div-check-area" style=" padding:10px 10px;">
+                        <div class="layui-row">
+                            <fieldset class="layui-elem-field layui-field-title" id="popup-fieldset-hexin">
+                                <legend class="legend-title">
+                                    <b class="check-area-title check-area-title-hexin">核心考点</b>
+                                    <button type="button" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                        <i class="layui-icon">&#xe624;</i>
+                                    </button>
+                                </legend>
+                                <div class="layui-field-box">
+                                    <div> <span class="shenhe-mark"><b>✔</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="popup-hexinkaodian" title="识别正确考点">
+                                        </blockquote>
+                                    </div>
+                                    <div><span class="shenhe-mark"><b>⑴</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" id="popup-hexinkaodian-wrongReasonKaoDian" title="考点识别过程错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div> <span class="shenhe-mark"><b>⑵</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" id="popup-hexinkaodian-wrongReasonZhiShiDian" title="知识点识别过程错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑶</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-shouldbefeihexin" id="popup-hexinkaodian-wrongReasonFeiHeXinKaoDian" title="核心考点多识别（考点识别过程错误，这个应该是非核心考点）">
+                                        </blockquote>
+                                    </div>
+
+                                    <div> <span class="shenhe-mark"><b>①</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-kaodianloushibie" id="popup-hexinkaodian-loseReasonKaoDian" title="考点识别过程漏识别造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>②</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-zhishidianloushibe" id="popup-hexinkaodian-loseReasonZhiShiDian" title="知识点识别过程漏识别造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>③</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-weizhizhishidian" id="popup-hexinkaodian-loseReasonZhiShiDianKu" title="知识点库缺少此知识点造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div> <span class="shenhe-mark"><b>④</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-zhishidiantezheng" id="popup-hexinkaodian-loseReasonZhiShiDianTeZheng" title="知识点特征错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑤</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-shouldbehexin" id="popup-hexinkaodian-loseReasonFeiHeXinKaoDian" title="核心考点漏识别（考点识别过程错误，这个错识别为非核心考点）">
+                                        </blockquote>
+                                    </div>
+
+
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="layui-row" style="margin-top: 25px;">
+                            <fieldset class="layui-elem-field layui-field-title" id="popup-fieldset-feihexin">
+                                <legend class="legend-title">
+                                    <b class="check-area-title">非核心考点</b>
+                                    <button type="button" class="layui-btn layui-btn-xs add-lose" style="margin-left: 30px;">
+                                        <i class="layui-icon">&#xe624;</i>
+                                    </button>
+                                </legend>
+                                <div class="layui-field-box">
+                                    <div><span class="shenhe-mark"><b>✔</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="popup-feihexinkaodian" title="识别正确考点">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑴</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaodiancuowu" id="popup-feihexinkaodian-wrongReasonKaoDian" title="考点识别过程错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑵</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhishidiancuowu" id="popup-feihexinkaodian-wrongReasonZhiShiDian" title="知识点识别过程错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑶</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-shouldbehexin" id="popup-feihexinkaodian-wrongReasonHeXinKaoDian" title="非核心考点多识别（考点识别过程错误，这个应该是核心考点）">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>①</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-kaodianloushibie" id="popup-feihexinkaodian-loseReasonKaoDian" title="考点识别过程漏识别造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>②</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-zhishidianloushibe" id="popup-feihexinkaodian-loseReasonZhiShiDian" title="知识点识别过程漏识别造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>③</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-weizhizhishidian" id="popup-feihexinkaodian-loseReasonZhiShiDianKu" title="知识点库缺少此知识点造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>④</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-zhishidiantezheng" id="popup-feihexinkaodian-loseReasonZhiShiDianTeZheng" title="知识点特征错误造成的">
+                                        </blockquote>
+                                    </div>
+
+                                    <div><span class="shenhe-mark"><b>⑤</b></span>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-shouldbefeihexin" id="popup-feihexinkaodian-loseReasonHeXinKaoDian" title="非核心考点漏识别（考点识别过程错误，这个错识别为核心考点）">
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="layui-row" style="margin-top: 25px;">
+                            <div class="layui-col-xs6" style="padding-right:10px;">
+                                <fieldset class="layui-elem-field layui-field-title" id="popup-fieldset-zhuti">
+                                    <legend class="legend-title">
+                                        <b class="check-area-title">主题</b>
+                                        <button type="button" class="layui-btn layui-btn-xs add-lose-zhuti" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+                                        <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="popup-zhuti-correct" title="识别正确主题知识点">
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-zhuticuowu" id="popup-zhuti-wrong" title="识别错误主题知识点">
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-zhutilou" id="popup-zhuti-lose" title="漏识别主题知识点">
+                                        </blockquote>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="layui-col-xs6" style="padding-left:40px;">
+                                <fieldset class="layui-elem-field layui-field-title" id="popup-fieldset-kaochaleixing">
+                                    <legend class="legend-title">
+                                        <b class="check-area-title">考查类型</b>
+                                        <button type="button" class="layui-btn layui-btn-xs add-lose-kaochaleixing" style="margin-left: 30px;">
+                                            <i class="layui-icon">&#xe624;</i>
+                                        </button>
+                                    </legend>
+                                    <div class="layui-field-box">
+                                        <blockquote class="layui-elem-quote shenhequote shibiezhegnque" id="popup-kaochaleixing-correct" title="识别正确考查类型">
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote shibiecuowu-kaochaleixingcuowu" id="popup-kaochaleixing-wrong" title="考查类型错识别">
+                                        </blockquote>
+                                        <blockquote class="layui-elem-quote shenhequote loushibie-kaochaleixinglou" id="popup-kaochaleixing-lose" title="考查类型漏识别">
+                                        </blockquote>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div style="position: absolute;bottom: 0px;margin: 2px auto;width: 100%;">
+                <div style="text-align: right;"> <button type="button" style="margin:12px 20px;" id="button-popup-check-submit" class="layui-btn layui-btn-normal  layui-btn-sm">确认审核</button>
+                </div>
+            </div> -->
+        </div>
+
+        <div>
+            <div id="progress-control" style="color: white;">
+                <div class="layui-row" style="padding-top:9px;">
+                    <div class="layui-col-xs2" style="text-align: left;">
+                        <div style="display: inline-block;">
+                            <div class="button-shitilist" id="button-shitilist-hide" style="padding-top:22px;">
+                                <i class="layui-icon layui-icon-down" style="font-size: 16px;font-weight: bold;"></i>
+                                <span>试题ID：</span>
+                            </div>
+                            <div class="button-shitilist" id="button-shitilist-show" style="padding-top:22px;">
+                                <i class="layui-icon layui-icon-up" style="font-size:16px;font-weight: bold;"></i>
+                                <span>试题ID：</span>
+                            </div>
+                            <span class="button-shitilist" id="current-shitiID" style="font-weight: bold;padding-top:22px;"></span>
+                            <span class="button-shitilist" id="current-shitiID-progress" style="font-weight: bold;padding-top:22px;"></span>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        .
+                    </div>
+                    <div class="layui-col-xs2">
+                        <div style="margin:18px auto;padding-left: 30px;text-align: right;">
+                            <button type="button" class="layui-btn  layui-btn-sm" id="button-shiti-previous"><i class="layui-icon"></i></button> &nbsp;&nbsp;&nbsp;
+                            <button type="button" class="layui-btn  layui-btn-sm" id="button-shiti-next"><i class="layui-icon"></i></button>
+                            <!-- <button type="button" class="layui-btn layui-btn-sm">确认审核</button> style="padding: 0 5px;"-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="side-memu" style="display: none;">
+        <div style="padding:4px 10px 3px 5px;border-bottom: tomato 1px solid;">
+            <div class="layui-row" style="margin-bottom: 4px;">
+                <div class="layui-col-xs6">.
+                    <!-- <div style="height: 20px;">
+                        <select id="new-result-select" style="width: 90%;">
+                    <option value="all">考点类别</option>
+                    <option value="100">100</option>
+                    <option value="100">201</option>
+                    </select>
+                    </div> -->
+                </div>
+                <div class="layui-col-xs6">
+                    <div style="right: 50px;font-style: italic;font-size: x-small;text-align: right;">
+                        共<span style="text-decoration: underline;">&nbsp;<span class="total-shiti" style="font-weight: bold;"></span>&nbsp;</span>题
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="test-item-container">
+
+        </div>
+
+    </div>
+    <div id="side-memu-gaoji" style="display: none;">
+        <form class="layui-form" action="">
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <select class="select-zhuangtai" id="select-zhuangtai-hexin">
+                                <option value="">核心考点状态</option>
+                              </select></div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input id="text-hexinkaodian" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="核心考点" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <select class="select-zhuangtai" id="select-zhuangtai-feihexin">
+                                <option value="">非核心考点状态</option>
+                              </select>
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" id="text-feihexinkaodian" name="title" lay-verify="title" autocomplete="off" placeholder="非核心考点" class="layui-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <select class="select-zhuangtai">
+                                <option value="">主题知识点状态</option>
+                              </select>
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="主题知识点" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-col-xs3">.
+                    <div class="gaojijiansuo-div" style="display: none;">
+                        <select class="select-zhuangtai">
+                                <option value="">考查类型状态</option>
+                              </select></div>
+                </div>
+                <div class="layui-col-xs3">.
+                    <div class="gaojijiansuo-div" style="display: none;">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="考查类型" class="layui-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" name="title" id="text-stem" lay-verify="title" autocomplete="off" placeholder="题干关键词" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" name="title" id="text-option" lay-verify="title" autocomplete="off" placeholder="选项关键词" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" name="title" id="text-answer" lay-verify="title" autocomplete="off" placeholder="答案关键词" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div">
+                        <input type="text" name="title" id="text-analysis" lay-verify="title" autocomplete="off" placeholder="解析关键词" class="layui-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs3">.
+                    <div class="gaojijiansuo-div" style="margin-top: 6px;display: none;">
+                        <select name="interest" lay-filter="aihao">
+                                <option value="">题型</option>
+                                <option value="1">单选</option>
+                                <option value="2">多选</option>
+                                <option value="3">填空</option>
+                                <option value="4">阅读</option>
+                              </select></div>
+                </div>
+                <div class="layui-col-xs3">.
+                    <div class="gaojijiansuo-div" style="margin-top: 6px;display: none;">
+                        <select name="interest" lay-filter="aihao">
+                                <option value="">体裁</option>
+                                <option value="2">体裁2</option>
+                                <option value="3">体裁3</option>
+                                <option value="4">体裁4</option>
+                              </select></div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div" style="margin-top: 23px;">
+                        .</div>
+                    <div class="gaojijiansuo-div" style="margin-top: 6px;display: none;">
+                        <select name="interest" lay-filter="aihao">
+                                <option value="">学习阶段</option>
+                                <option value="1">初中</option>
+                                <option value="2">高中</option>
+                                <option value="3">大学</option>
+                                <option value="4">旅行</option>
+                              </select></div>
+                </div>
+                <div class="layui-col-xs3">
+                    <div class="gaojijiansuo-div" style="text-align: center;">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div style="padding:2px 10px;position:absolute;right:0px;top: 118px;">
+            <span id="innershowshiticount" style="display: none;">共<span style="text-decoration: underline;">&nbsp;<span class="total-shiti" style="font-weight: bold;"></span>&nbsp;</span>题</span>
+
+            <button type="button" id="button-jiansuo-gaoji" class="layui-btn layui-btn-normal layui-btn-sm">检索</button>
+        </div>
+        <div id="test-item-container2" style="overflow: auto;">
+            <div style="text-align: center;"> <b>试题列表显示区域</b> </div>
+
+        </div>
+
+    </div>
+
+    <div id="side-tihao-memu" style="display: none;">
+        <div id="tihao-title" style="position: absolute;top: 0px;left: 0px;padding: 10px 15px;border-bottom: green 1px solid;">
+            <span="font-family: kaiti;font-weight: bold;">题号</span>
+        </div>
+        <div id="tihao-display" style="font-family:kaiti;text-align: center;margin-top: 40px;overflow-y: auto;">
+        </div>
+    </div>
+
+
+    <div id="manual-popup" style="display: none;">
+        <div style="margin:10px 20px;">
+            <div style="margin-left: 30px;margin-bottom: 10px;">
+                <div>
+                    <b>一、</b> 在每个“识别项”处右键，即可弹出相应的审核操作，或撤销审核操作
+                </div>
+                <div>
+                    <b>一、</b>点击 <button type="button" class="layui-btn layui-btn-xs add-lose">
+                    <i class="layui-icon">&#xe624;</i>
+                </button>，即可添加相对应的漏识别项
+                </div>
+                <div>
+                    <b>三、</b>各色块颜色表示的含义如下，色块的长度是其右侧“识别项”相对数量的反映
+                </div>
+            </div>
+            <div>
+                <span class="color-explain" style="background:rgba(0,150,136);">绿色✔；</span>识别正确
+            </div>
+            <div>
+                <span class="color-explain" style="background: red;">红色⑴；</span>考点识别过程错误造成的错识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgba(255, 0, 0, 0.6);">红色⑵；</span>知识点识别过程错误造成的错识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgba(255, 0, 0, 0.3);">红色⑶；</span>多识别（考点识别过程错误，这个应该是核心，或非核心考点）
+            </div>
+            <div>
+                <span class="color-explain" style="background: blue;">蓝色①；</span>考点识别过程漏识别造成的漏识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgba(0, 0, 255, 0.6);">蓝色②；</span>知识点识别过程漏识别造成的漏识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgba(113, 113, 255, 0.4);">蓝色③；</span>知识点库缺少此知识点造成的漏识别
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgba(91, 214, 251, 0.8);">蓝色④；</span>知识点特征错误造成的
+            </div>
+            <div>
+                <span class="color-explain" style="background: rgb(3, 184, 240);">蓝色⑤；</span>漏识别（考点识别过程错误造成的漏识别，错识别为核心，或非核心考点）
+            </div>
+        </div>
+
+    </div>
+    <div id="add-lose-content" style="display: none;">
+        <div class="layui-tab layui-tab-brief" lay-filter="add-knowledge-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">添加数据库知识点</li>
+                <li>添加未知知识点</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-row">
+                        <div class="layui-col-xs3 condition-input" style="text-align: right;padding-right:2px;">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item" style="margin: auto;">
+                                    <select id="select-knowledgetypefilter1" name="" lay-filter="select-knowledgetypefilter1" memo=""></select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-col-xs7 condition-input">
+                            <input type="text" id="input-knowledge-search" placeholder="知识点检索" class="layui-input zhishidianjiansuo">
+                        </div>
+                        <div class="layui-col-xs2 condition-input" style="text-align: right;padding: 4px 2px;">
+                            <button id="button-search-zhishidian" type="button" class="layui-btn layui-btn-normal layui-btn-sm"><b>检索</b></button>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div id="add-knowledge-search-table" lay-filter="add-knowledge-search-table">
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 condition-input" style="text-align: left;">
+                            <form action="" class="layui-form" a>
+                                <div class="layui-form-item" style="margin-bottom: 0px;">
+                                    <label class="layui-form-label" style="width: 100px;text-align: left;"><b>漏识别原因：</b> </label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="lose-reason" lay-filter="add-knowledge-losereason" value="知识点识别原因" title="知识点识别原因">
+                                        <input type="radio" id="radio-lose-reason-default" name="lose-reason" lay-filter="add-knowledge-losereason" value="考点识别原因" title="考点识别原因">
+                                        <input type="radio" name="lose-reason" lay-filter="add-knowledge-losereason" value="知识点识别特征原因" title="目标域筛选原因">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row">
+                        <form class="layui-form" action="" style="margin:30px 10px 0px 0px;">
+                            <div class="layui-form-item" style="margin: auto;">
+                                <label class="layui-form-label"><b>知识点类型</b> </label>
+                                <div class="layui-input-block">
+                                    <select name="" lay-filter="add-lose-knowledgeType" memo="" id="add-lose-knowledgeType">
+                                    <option value="字母">字母</option>
+                                    <option value="音标">音标</option>
+                                    <option value="单词">单词</option>
+                                    <option value="词组">词组</option>
+                                    <option value="常用表达">常用表达</option>
+                                    <option value="句法">句法</option>
+                                    <option value="专有名词">专有名词</option>
+                                    <option value="文体">文体</option>
+                                    <option value="技能">技能</option>
+                                    <option value="构词法">构词法</option>
+                                    <option value="词法">词法</option>
+                                    <option value="答题技巧">答题技巧</option>
+                                    <option value="常用句式">常用句式</option>
+                                         </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-row">
+                        <form class="layui-form" action="" style="margin:30px 10px 0px 0px;">
+                            <div class="layui-form-item" style="margin: auto;">
+                                <label class="layui-form-label"><b>学习阶段</b> </label>
+                                <div class="layui-input-block">
+                                    <select name="" lay-filter="add-lose-version" memo="" id="add-lose-version">
+                                    <option value="初中">初中</option>
+                                    <option value="高中">高中</option>
+                                    <option value="大学公共英语">大学公共英语</option>
+                                         </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-row">
+                        <form class="layui-form" action="" style="margin:30px 10px 0px 0px;">
+                            <label class="layui-form-label"><b>知识点名称</b> </label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea" id="add-lose-textarea" spellcheck="false"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-row">
+                        <form class="layui-form" action="" style="margin:30px 10px 0px 0px;">
+                            <label class="layui-form-label"><b>识别文本</b> </label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea" id="add-lose-exampleText" spellcheck="false"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="add-lose-content-zhuti" style="display: none;margin:10px">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-row">
+                <div class="layui-col-xs10 condition-input">
+                    <input type="text" id="input-knowledge-search-zhuti" placeholder="知识点检索" class="layui-input zhishidianjiansuo">
+                </div>
+                <div class="layui-col-xs2 condition-input" style="text-align: right;padding: 4px 2px;">
+                    <button type="button" id="button-add-zhuti-knowledge" class="layui-btn layui-btn-normal layui-btn-sm"><b>检索</b></button>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div id="add-zhuti-search-table" lay-filter="add-zhuti-search-table">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="add-lose-content-kaochaleixing" style="display: none;margin:10px">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-row">
+                <form class="layui-form" action="" style="margin:30px 10px 0px 0px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><b>考查类型：</b> </label>
+                        <div class="layui-input-block">
+                            <input type="text" id="add-lose-kaochaleixing-textarea" name="title" lay-verify="title" autocomplete="off" placeholder="请输入考查类型" class="layui-input zhishidianjiansuo" spellcheck="false">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="popup-zhishidian-reference" style="display: none;margin:5px 5px 5px 0px;">
+        <div id="popup-zhishidian-reference-button" style="text-align: right;font-size: x-large;font-weight: bold;padding-bottom: 4px;border-bottom: dashed 2px green;">
+            <button id="reference-button-previous" type="button" class="layui-btn layui-btn-normal layui-btn-sm ref-button" style="margin-right: 13px;"><b>上一题</b></button>
+            <div id="popup-ref-tihao" style="display: inline-block;text-align: center;">
+
+            </div>
+            <button id="reference-button-next" type="button" class="layui-btn layui-btn-normal layui-btn-sm ref-button" style="margin-left: 13px;"><b>下一题</b></button>
+
+        </div>
+
+        <div id="popup-zhishidian-reference-msg" style="text-align: center;font-size: x-large;font-weight: bold;"></div>
+        <div id="popup-zhishidian-reference-container" style="overflow: auto;height:596px;padding-top: 5px;">
+
+        </div>
+        <div class="layui-row" id="pupup-reference-item-template">
+            <div class="layui-row popup-reference-item" style="padding: 2px 15px 8px 15px;">
+                <div>
+                    <div class="layui-row" style="padding-bottom: 7px;">
+                        <div class="layui-col-xs2" style="padding-left:10px;line-height: 35px;background-color: #c4ff68;"> <label class="exampleText-title">例句</label></div>
+                        <div class="layui-col-xs10">
+                            <div class="exampleText" style="font-size: large;padding: 4px 15px">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="padding-left:40px;">
+                        <div name="desc" class="popup-reference-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="shiti-memo" style="display: none;padding: 20px;">
+            <textarea name="" id="textarea-memo" class="layui-textarea" id="" spellcheck="false" placeholder="请输入备注信息" cols="30" rows="7"></textarea>
+        </div>
+</body>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/moment/moment.js"></script>
+<script src="js/userinfo.js"></script>
+<script src="layui/layui.js"></script>
+<script src="layui_exts/mouseRightMenu/mouseRightMenu.js"></script>
+<script src="js/xml2json/xml2json.js"></script>
+<script src="js/checkpage-consumer-general.js"></script>
+
+</html>

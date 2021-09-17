@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>考点&知识点</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/createnewtask.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <span class="layui-logo">全学科试题知识点测试平台---创建考点测试任务</span>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="navigation.html">返回主页</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="layui-body" style="padding: 0px 1%;bottom: 0px;">
+            <div class="layui-row " style="margin-top: 10px;">
+                <div class="layui-col-xs7" style="padding-right: 10px;">
+                    <fieldset class="layui-elem-field layui-field-title feild-box">
+                        <legend>
+                            <b> 1. 任务基本信息设置</b>
+                        </legend>
+                        <div class="layui-row  set-content">
+                            <div class="layui-row">
+                                <div class="layui-col-xs8">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label"> <b>任务名称</b> </label>
+                                            <div class="layui-input-block">
+                                                <input id="input-taskname" type="text" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="layui-col-xs4">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label"><b>学科</b></label>
+                                            <div class="layui-input-block">
+                                                <select lay-filter="select-subject">
+                                                <option value="C"  selected="">英语</option>
+                                                <option value="A">语文</option>
+                                              </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="layui-row">
+                                <div class="layui-col-xs8">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label"><b>测试人员</b></label>
+                                            <div class="layui-input-block">
+                                                <div style="display: inline-block;" class="select-area-setting select-testaccount-setting">
+                                                    <i class="layui-icon layui-icon-set-fill" style="font-size: 26px;"></i>
+                                                </div>
+                                                <div style="display: inline-block;width: 90%;" class="select-testaccount-setting">
+                                                    <input type="text" id="select-testaccount" title="" style="text-align: center;" readonly class="layui-input select-area">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="layui-col-xs4">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label"><b>试题分配</b> </label>
+                                            <div class="layui-input-block">
+                                                <select id="shiti-assignment" lay-filter="shiti-assignment"></select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-col-xs5" style="padding-left: 10px;">
+                    <fieldset class="layui-elem-field layui-field-title feild-box">
+                        <legend>
+                            <b>2. 抽题策略设置</b>
+                        </legend>
+                        <div class="layui-row  set-content">
+                            <div class="layui-row">
+                                <form class="layui-form" action="" style="width: 300px;">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label"><b>抽题策略</b></label>
+                                        <div class="layui-input-block">
+                                            <select lay-filter="choutimoshi-select">
+                                <option value="0"></option>
+                                <option value="100">随机抽题</option>
+                                <option value="102">去重抽题</option>
+                                <option value="103">精准抽题</option>
+                              </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="layui-row">
+                                <form class="layui-form" action="">
+
+                                    <div id="chongcerenwu" class="layui-form-item" style="display: none;">
+                                        <label class="layui-form-label"><b>重测任务</b></label>
+                                        <div class="layui-input-block">
+                                            <div style="display: inline-block;" class="select-area-setting" id="select-testtask-chongce-setting">
+                                                <i class="layui-icon layui-icon-set-fill" style="font-size: 26px;"></i>
+                                            </div>
+                                            <div style="display: inline-block;width: 90%;">
+                                                <input type="text" id="select-testtask-chongce" readonly class="layui-input select-area">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="quchongrenwu" class="layui-form-item" style="display: none;">
+                                        <label class="layui-form-label"><b>去重任务</b></label>
+                                        <div class="layui-input-block">
+                                            <div style="display: inline-block;" class="select-area-setting select-testtask-setting">
+                                                <i class="layui-icon layui-icon-set-fill" style="font-size: 26px;"></i>
+                                            </div>
+                                            <div style="display: inline-block;width: 90%;" class="select-testtask-setting">
+                                                <input type="text" id="select-testtask" style="text-align: center;" readonly class="layui-input select-area">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+            </div>\
+            <div class="layui-row">
+                <fieldset class="layui-elem-field layui-field-title feild-box">
+                    <legend>
+                        <b>3. 备注信息</b>
+                    </legend>
+                    <div class="layui-row set-content" style="margin-top: 10px;">
+                        <input type="text" placeholder="输入备注信息" class="layui-input" id="input-memo">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="layui-row" style="margin-top: 20px;">
+                <fieldset class="layui-elem-field layui-field-title feild-box">
+                    <legend>
+                        <b id="step-4-title">4. 题目类型及数量设置</b>
+                    </legend>
+                </fieldset>
+                <div class="layui-row  set-content">
+                    <div id="testquestion-cate-1">
+                        <div class="layui-col-xs3" style="padding-left: 7px;">
+                            <div style="margin-bottom: 12px;" id="tree-title"> <b>“题型-学习阶段-体裁”信息选择</b></div>
+                            <div id="tree-tixing-version-ticai" class="demo-tree-more" style="overflow-y: auto;"></div>
+                        </div>
+                        <div class="layui-col-xs9" style="padding-left: 7px;">
+                            <div class="layui-row">
+                                <div class="layui-row">
+                                    <div class="layui-col-xs10" style="padding-left: 7px;text-align: center;">
+                                        <b>测试题量设置（表格根据左边树形选择框生成，试题数量为0的体裁将不会在表格显示！）</b>
+                                    </div>
+                                    <div class="layui-col-xs2" style="padding-left: 7px;text-align: center;">
+
+                                    </div>
+                                </div>
+                                <div class="layui-row" style="padding:0px 12px;">
+                                    <div id="display-area">
+                                        <table id="paging-table" lay-filter="paging-table"> </table>
+                                        <div id="paging"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="testquestion-cate-2" style="display: none;">
+                        <div class="layui-input-block" style="margin:0px;">
+                            <textarea placeholder="请在此输入需要测试的试题id，每个ID之间以英文逗号间隔“,”，示例：    100000000,100000008,100000009,100000012,100000013,100000017,100000021,100000024" id="textarea-shitiID" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div style="margin: 5px auto;">
+                <button id="btn-confirm-task" style="margin:auto;display: inherit;" class="layui-btn layui-btn-normal layui-btn-sm">
+                  开始抽题 </button>
+            </div>
+
+            <div id="data-confirm" style="text-align:center;padding:15px;display:none;">
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>任务名称</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <span id="confirm-taskName"></span>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>抽题策略</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <span id="confirm-taskStrategy"></span>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>测试人员</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <span id="confirm-accounts"></span>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>试题分配</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <span id="confirm-assign"></span><span> (人/题)</span>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>试题数量设置</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <table id="confirm-table" lay-filter="confirm-table"> </table>
+                        <span id="confirm--div-ids" style="word-break: break-all;font-weight: bold;font-size: medium;"> </span>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs2 confirm-title">
+                        <b>备注</b>
+                    </div>
+                    <div class="layui-col-xs10 confirm-content">
+                        <span id="confirm-memo"></span>
+                    </div>
+                </div>
+                <div class="layui-row">
+
+                </div>
+            </div>
+            <div id="testaccount-select-panel" style="text-align:center;padding:15px;display:none;">
+                <table id="testaccount-table" lay-filter="testaccount-table"> </table>
+            </div>
+            <div id="testtask-select-panel" style="text-align:center;padding:15px;display:none;">
+
+                <div class="layui-row">
+                    <div class="layui-col-xs9">
+                        <input id="input-taskname-search" type="text" autocomplete="off" class="layui-input" placeholder="任务名称模糊搜索">
+                    </div>
+                    <div class="layui-col-xs3" style="text-align:right">
+                        <button type="submit" lay-filter="btn-search" id="btn-search-task" class="layui-btn layui-btn-normal layui-btn-sm ">
+                            检&nbsp;索
+                    </button>
+                    </div>
+                </div>
+                <table id="testtask-table" lay-filter="testtask-table"> </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/createnewtask.js'></script>
+
+</html>

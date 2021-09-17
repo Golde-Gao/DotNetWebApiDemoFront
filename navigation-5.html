@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation-5.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo">
+                <span>全学科试题知识点测试平台</span>
+            </a>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation.html">主页</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-1.html">考点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-2.html">知识点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-3.html">考点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-4.html">知识点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-5.html" style="color:burlywood;">测试数据可视化</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-8.html">英语问题反馈</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-9.html">问题处理</a></li>
+            </ul>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./navigation.html">主页</a></dd>
+                        <dd><a href="./navigation-7.html">配置数据</a></dd>
+                        <dd><a href="./navigation-6.html">账号管理</a></dd>
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body">
+            <div class="layui-row">
+                <div class="layui-col-xs7">
+                    <div>
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>数据图画布</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+                                <div class="layui-row" style="padding-top: 60px;">
+                                    <div class="chart">
+                                        <div id="chartelement" style="margin: auto;  width: 100%;height:500px;">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="table">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                </div>
+                <div class="layui-col-xs5" style="padding: 7px; padding-left: 80px;">
+                    <div class="layui-row">
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>1. 语文考点</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-1" id="ch-tiliang-weiquchong">各题型已测题量柱状图（未去重）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（去重后）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型综合指标柱状图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-1" id="ch-history-zhibiao">各题型历史指标线形图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">单个任务测试统计图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-1" id="ch-kaocheleixig">考查类型识别统计柱状图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">待添加功能项... ...</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-row">
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>2. 语文知识点</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（未去重）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（去重后）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型综合指标柱状图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型历史指标线形图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">单个任务测试统计图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">待添加功能项... ...</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-row">
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>3. 英语考点</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-1" id="eng-tiliang-weiquchong">各题型已测题量柱状图（未去重）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（去重后）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型综合指标柱状图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型历史指标线形图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">单个任务测试统计图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">待添加功能项... ...</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-row">
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>4. 英语知识点</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（未去重）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型已测题量柱状图（去重后）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型综合指标柱状图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">各题型历史指标线形图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">单个任务测试统计图</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">待添加功能项... ...</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable" id="btn-chart-knowledgelose">漏识别考点类型饼状图（人工审核反馈）</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable" id="btn-chart-knowledgewrong">错识别考点类型饼状图（人工审核反馈）</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="layui-row">
+                        <fieldset class="layui-elem-field layui-field-title feild-box">
+                            <legend>
+                                <b>X. 其他待扩展项目</b>
+                            </legend>
+                            <div class="layui-row  set-content">
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">功能1</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">功能2</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">功能3</button>
+                                <button type="button" class="layui-btn  layui-btn-normal  layui-btn-sm charttable  button-status-0">功能... ...</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © lancoo
+        </div>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="js/echarts/echarts.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/navigation-5.js'></script>
+
+</html>

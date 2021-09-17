@@ -1,0 +1,19 @@
+.layui-input-block {
+    margin-right: 30px;
+}
+
+.prop-title {
+    padding-left: 3px;
+    border-left: solid rgb(90, 245, 63) 3px;
+    margin: 4px 0px;
+    display: inline-block;
+    font-size: medium;
+}
+
+.prop-content {
+    margin: 6px 0px;
+    margin-left: 10px;
+    display: inline-block;
+    font-size: medium;
+    background: honeydew;
+}

@@ -1,0 +1,16 @@
+tbody>tr:nth-child(even) {
+    background-color: rgb(237 255 244) !important;
+}
+
+.layui-input-block {
+    margin-right: 30px;
+}
+
+.layui-btn-sm {
+    margin: 4px;
+}
+
+.layui-table,
+.layui-table-view {
+    margin: 0px;
+}

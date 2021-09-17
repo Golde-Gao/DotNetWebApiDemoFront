@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation-6.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./navigation-6.html">
+                <span>全学科试题知识点测试平台——<span style="font-size: 15px;">账号管理</span></span>
+            </a>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./navigation.html">主页</a></dd>
+                        <dd><a href="./navigation-7.html">配置数据</a></dd>
+                        <dd><a href="./navigation-6.html">账号管理</a></dd>
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body">
+            <div class="layui-row search-bar">
+
+
+                <div class="layui-col-xs2 condition-input">
+                    <!-- <input type="text" id="" placeholder="账号名" class="layui-input"> -->
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <!-- <form class="layui-form" action="" lay-filter="task-query">
+                        <div class="layui-form-item">
+                            <select>
+                          <option value="">角色类型</option>
+                          <option value="100">管理员账号</option>
+                          <option value="101">测试账号</option>
+                          <option value="102">测试问题解决账号</option>
+                      </select>
+                        </div>
+                    </form> -->
+                </div>
+
+                <div class="layui-col-xs9 condition-input" style="text-align: right;">
+                    <!-- <button id="btn-search" class="layui-btn layui-btn-normal layui-btn-sm button-searchbar">检&nbsp;索</button> -->
+                    <button data-method="offset" data-type="auto" id="btn-add" class="layui-btn layui-btn-normal layui-btn-sm ">✚&nbsp;添加测试账号</button>
+                </div>
+            </div>
+
+            <table id="paging-table" lay-filter="paging-table"> </table>
+            <div id="paging"> </div>
+
+
+        </div>
+        <div id="account-popup" style="display:none;">
+            <form class="layui-form" style="margin-top:20px;" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" id="c-name" autocomplete="off" placeholder="请输入账号名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" id="c-password" autocomplete="off" placeholder="请输入账号密码" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号类型</label>
+                    <div class="layui-input-block">
+                        <select id="c-accounttype">
+                  <option value="">请选择</option>
+                  <option value="100">管理员账号</option>
+                  <option value="101">测试账号</option>
+                  <option value="102">测试问题解决账号</option>
+              </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入备注信息" id="c-memo" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/html" id="side-bar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/navigation-6.js'></script>
+
+</html>

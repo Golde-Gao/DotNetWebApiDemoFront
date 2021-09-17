@@ -1,0 +1,58 @@
+.layui-body {
+    /* border: 1px red solid; */
+    padding-top: 8px;
+}
+
+tbody>tr:nth-child(even) {
+    background-color: rgb(237 255 244) !important;
+}
+
+.condition-input {
+    padding: 3px;
+}
+
+.popup-material {
+    display: none;
+}
+
+.linetail-button {
+    display: inline-block;
+    padding: 8px 0px;
+}
+
+.navigation {
+    display: none;
+}
+
+thead {
+    color: white !important;
+}
+
+thead tr {
+    background-color: #009688 !important;
+}
+
+.layui-logo {
+    line-height: 45px !important;
+    font-weight: bold !important;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* border-radius: 7px; */
+    background-color: #352742;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #bebcbc;
+    border-radius: 3px;
+}
+
+.layui-logo {
+    width: 500px !important;
+    text-align: left !important;
+    padding-left: 20px !important;
+}

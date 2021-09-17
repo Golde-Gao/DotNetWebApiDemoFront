@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation-overview.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+    <script>
+        var userinfo = null;
+    </script>
+</head>
+
+<body class="layui-layout-body">
+
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo">
+                <span>全学科试题知识点测试平台</span>
+            </a>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation.html" style="color:burlywood;">主页</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-1.html">考点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-2.html">知识点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-3.html">考点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-4.html">知识点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-5.html">测试数据可视化</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-7.html">配置数据</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-8.html">英语问题反馈</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-9.html">问题处理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-6.html">账号管理</a></li>
+            </ul>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./navigation.html">主页</a></dd>
+                        <dd class="c-admin"><a href="./navigation-7.html">配置数据</a></dd>
+                        <dd class="c-admin"><a href="./navigation-6.html">账号管理</a></dd>
+                        <dd class="c-admin"><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-body">
+            <div>
+                <div class="layui-row">
+                    <div class="layui-col-xs5">
+                        <div id="title-category">
+                            <div id="div-selectsubjectversion" style="text-align: left;color: #009688 ;font-size: medium;font-weight: bold;">
+                                <span id="span-subjectName"></span>，<span id="span-versionName"></span>
+                                <i class="layui-icon layui-icon-set-fill" style="margin-left: 10px;"></i> </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs7" style="text-align: right;font-size: medium;">
+                        <div>测试试题总量：<span id="span-total" style="font-weight: bold;">142,694</span> &nbsp;&nbsp;可识别率：<span id="span-keshibielv" style="color:red;font-weight: bold;"></span> &nbsp;&nbsp;识别准确率：<span id="span-shiBieZhunQueLv" style="color:#009688;font-weight: bold;"></span></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div id="area-zonghe" class="layui-row area" style="overflow-y: auto;">
+                <div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs5">
+                            <div id="chart-kaodianzonghe" class="chart-left" style="height: 82vh;margin-top: 15px;margin-bottom: 0px;">
+
+                            </div>
+                        </div>
+                        <div class="layui-col-xs7" style="padding-left: 3%;">
+                            <div class="" style="width: 100%;">
+                                <div style="font-size: medium;font-weight: bold;"><i class="layui-icon layui-icon-radio" style="margin-right: 8px;"></i>按题型诊断</div>
+                                <table id="table-latest" lay-filter="table-latest"> </table>
+                            </div>
+                            <div class="" style="width: 100%;margin-top: 30px;">
+                                <div class="layui-row">
+                                    <div class="layui-col-xs6" style="font-size: medium;font-weight: bold;"><i class="layui-icon layui-icon-circle-dot" style="margin-right: 8px;"></i>按知识点诊断</div>
+                                    <div class="layui-col-xs6" style="text-align: right;">
+                                        <div style="font-size: medium;font-weight: bold;text-decoration: underline;">
+                                            <a href="zhenduanKaoDian.html" id="a-openmore" class="a-tabletitle" title="点击新窗口打开详情"> 更多<i class="layui-icon layui-icon-next"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table id="table-kaodian-diagnose" lay-filter="table-kaodian-diagnose"> </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="div-select" style="display: none;padding: 20px;">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学科</label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="s_subjectName" lay-filter="s_subjectName">
+                            <option value="英语"  selected="">英语</option>
+                            <option value="语文">语文</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学习阶段</label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="s_versionName" lay-filter="s_versionName">
+                            <option value="">不区分阶段</option>
+                            <option value="所有阶段">所有阶段</option>
+                            <option value="初中版">初中版</option>
+                            <option value="高中版">高中版</option>
+                            <option value="高职版">高职版</option>
+                            <option value="大学英语公共版">大学英语公共版</option>
+                          </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- <div id="area-fentixing" class="layui-row area" style="height: 40vh;">
+                <div style="margin:20px auto;">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">英语</li>
+                            <li>语文</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div>
+                                    <div id="chart-kaodianfeitixing-yingyu" style="height: 36vh;width: 100%;margin: auto;">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div>
+                                    <div id="chart-kaodianfeitixing-yuwen" style="height: 36vh;width: 100%;margin: auto;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <script type="text/html" id="dingweishiti">
+                <a class="layui-btn layui-btn-xs" lay-event="dingweishiti">定位试题</a>
+            </script>
+            <script type="text/html" id="tixingdingwei">
+                <!-- <a class="layui-btn layui-btn-radius layui-btn-xs layui-btn-danger" lay-event="dingweicuowu" title="定位错识别试题"><i class="layui-icon layui-icon-location"></i></a>
+                <a class="layui-btn layui-btn-radius layui-btn-xs layui-btn-warm" lay-event="dingweiyilou" title="定位漏识别试题"><i class="layui-icon layui-icon-location"></i></a> -->
+                <!-- <a class="layui-btn layui-btn-radius layui-btn-xs" lay-event="leixingdetail" title="知识点类型详情"><i class="layui-icon layui-icon-table"></i></a> -->
+                <button lay-filter="btn-detail" id="btn-detail" class="layui-btn layui-btn-sm" lay-event="leixingdetail" title="知识点类型详情">
+                    详&nbsp;情
+            </button>
+            </script>
+        </div>
+
+        <div class="layui-footer">
+            © lancoo
+        </div>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/echarts/echarts.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/navigation-overview.js'></script>
+
+</html>

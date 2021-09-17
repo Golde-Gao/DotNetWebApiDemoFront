@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' href='css/navigation.css' type='text/css' media='screen'>
+    <link rel='stylesheet' href='css/navigation-7.css' type='text/css' media='screen'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <a class="layui-logo" href="./navigation-7.html">
+                <span>全学科试题知识点测试平台——<span style="font-size: 15px;">配置数据</span></span>
+            </a>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./navigation.html">主页</a></dd>
+                        <dd><a href="./navigation-7.html">配置数据</a></dd>
+                        <dd><a href="./navigation-6.html">账号管理</a></dd>
+                        <dd><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body" style="padding-top: 0px;">
+            <!-- 内容主体区域 -->
+            <div class="layui-row">
+
+                <div class="layui-col-xs10">
+                    <div class="layui-tab  layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">表格</li>
+                            <li>图形</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div id="display-area" style="margin: auto;">
+                                    <div id="table-title" style="text-align: center;font-size:large;">点击右侧按钮，显示相关信息</div>
+                                    <table id="paging-table"> </table>
+                                    <div id="paging-bar"> </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item" style="height: 68vh;">
+                                <div id="chart-message" style="margin:50px;text-align: center; font-size:28px;font-weight:bold;">
+                                    没有对应的图形信息
+                                </div>
+                                <div class="chart" style="margin-top: 50px;">
+                                    <div id="chartelement" style="margin: auto;height:70vh;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </fieldset>
+                </div>
+                <div class="layui-col-xs2" style="padding-left: 20px;padding-top: 27px;">
+                    <fieldset class="layui-elem-field layui-field-title feild-box">
+                        <legend>
+                            <b>1. 基础配置</b>
+                        </legend>
+                        <div class="layui-row  set-content">
+                            <div class="layui-row button-div"><button type="button" class="layui-btn layui-btn-normal layui-btn-sm " id="btn-shiticonf-all">试题配置信息</button>
+                            </div>
+                            <div class="layui-row button-div"> <button type="button" class="layui-btn layui-btn-normal  layui-btn-sm" id="btn-subject-tixing">【学科-题型】信息</button>
+                            </div>
+                            <div class="layui-row button-div"><button type="button" class="layui-btn layui-btn-normal  layui-btn-sm " id="btn-tixing-all">所有题型信息</button>
+                            </div>
+                            <div class="layui-row button-div"><button type="button" class="layui-btn layui-btn-normal  layui-btn-sm " id="btn-ticai-all">体裁信息</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="layui-elem-field layui-field-title feild-box">
+                        <legend>
+                            <b>2. 试题查询</b>
+                        </legend>
+                        <div class="layui-row  set-content">
+                            <div class="layui-row button-div"> <button type="button" class="layui-btn layui-btn-normal  layui-btn-sm " id="btn-shitireview-all">试题查询</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/echarts/echarts.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src="js/navigation-7.js"></script>
+
+</html>

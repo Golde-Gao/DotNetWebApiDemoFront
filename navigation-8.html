@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>全学科试题知识点测试平台</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/navigation-8.css'>
+    <link rel="icon" href="images/lancoo.ico" type="image/x-icon">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header" id="header-bar">
+            <a class="layui-logo">
+                <span>全学科试题知识点测试平台</span>
+            </a>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation.html">主页</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-1.html">考点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-2.html">知识点测试任务</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-3.html">考点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-4.html">知识点测试任务管理</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-5.html">测试数据可视化</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-8.html" style="color:burlywood;">英语问题反馈</a></li>
+                <li class="layui-nav-item navigation" style="display:none;"><a href="./navigation-9.html">问题处理</a></li>
+            </ul>
+            <ul class="layui-nav  layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="userInfo"></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./navigation.html">主页</a></dd>
+                        <dd class="c-admin"><a href="./navigation-7.html">配置数据</a></dd>
+                        <dd class="c-admin"><a href="./navigation-6.html">账号管理</a></dd>
+                        <dd class="c-admin"><a href="profile.html" target="_blank">Profile</a></dd>
+                        <dd><a href="login.html">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-body">
+            <div class="layui-row search-bar">
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="testEntityId" name="testEntityId" placeholder="试题ID" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="margin: auto;">
+                            <div class="layui-input-block layui-input-block-local" style="margin: auto;">
+                                <select class="issueType-select" id="issueType-select" name="issueTypeId" memo="这里后边要用cookie记录以下，记住用户上一次选的学科信息，在这里加载">
+                                 </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="margin: auto;">
+                            <div class="layui-input-block layui-input-block-local" style="margin: auto;">
+                                <select class="solveType-select" id="solveType-select" name="solveTypeId" memo="数据库读取的方式加载">
+                                 </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="margin: auto;">
+                            <div class="layui-input-block layui-input-block-local" style="margin: auto;">
+                                <select class="checkType-select" id="checkType-select" name="checkTypeId" memo="数据库读取的方式加载">
+                                 </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="margin: auto;">
+                            <div class="layui-input-block layui-input-block-local" style="margin: auto;">
+                                <select class="knowledgeType-select" id="knowledgeType-select" name="KnowledgeType" memo="数据库读取的方式加载">
+                                 </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="knowledge" placeholder="知识点" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="knowledgeReply" placeholder="识别回复" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="knowledgeMemo" placeholder="备注关键词" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="checkReply" placeholder="审核备注关键词" class="layui-input">
+                </div>
+                <div class="layui-col-xs3 condition-input" style="text-align: right;">
+                    <button id="btn-search-condition-more" class="layui-btn layui-btn-normal layui-btn-sm  btn-search-condition button-searchbar">更多条件</button>
+                    <button id="btn-search-condition-less" class="layui-btn layui-btn-normal  layui-btn-sm btn-search-condition button-searchbar" style="display: none;">简洁条件</button>
+                    <button id="button-add-record" class="layui-btn layui-btn-normal layui-btn-sm button-searchbar" style="display: none;">✚&nbsp;记&nbsp;录</button>
+                    <button id="btn-search" class="layui-btn layui-btn-normal layui-btn-sm button-searchbar">检&nbsp;索</button>
+                </div>
+            </div>
+
+            <div class="layui-row search-bar" id="second-searchbar" style="display: none;">
+
+                <div class="layui-col-xs2 condition-input">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline" style="width: 100%;">
+                            <input type="text" name="reportTime" class="layui-input" id="reportTime" autocomplete="off" placeholder="报告时间">
+                            <i class="layui-icon layui-icon-date" class="time-ico" style="font-size: 30px; color:gainsboro;position: absolute;top: 5px;right: 10px;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs2 condition-input">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline" style="width:100%;">
+                            <input type="text" name="solveTime" class="layui-input" id="solveTime" autocomplete="off" placeholder="回复时间">
+                            <i class="layui-icon layui-icon-date" class="time-ico" style="font-size: 30px; color:gainsboro;position: absolute;top: 5px;right: 10px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-col-xs2 condition-input">
+                    <input type="text" id="sentence" name="sentence" placeholder="识别文本关键词" title="" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="sentenceResult" name="sentenceResult" placeholder="识别结果关键词" class="layui-input">
+                </div>
+
+
+
+
+                <div class="layui-col-xs2 condition-input">
+                    <input type="text" id="reportAccountName" name="reportAccountName" placeholder="反馈人(示例：张良,胡宗宪)" class="layui-input">
+                </div>
+                <div class="layui-col-xs1 condition-input">
+                    <input type="text" id="solveAccountName" name="solveAccountName" placeholder="回复人" class="layui-input">
+                </div>
+                <div class="layui-col-xs2 condition-input">
+                    <input type="text" id="ordercondition" name="ordercondition" placeholder="排序条件(点击弹框，勿手改)" class="layui-input">
+                </div>
+            </div>
+            <div id="display-area" style="width: 100%;margin:7px auto">
+                <table id="paging-table" lay-filter="paging-table"> </table>
+                <div id="paging"> </div>
+            </div>
+
+            <div id="display-entity" style="display: none;padding:10px 20px;">
+                <div id="entity-content"></div>
+            </div>
+
+        </div>
+
+
+        <div id="ordercondition-select-panel" style="text-align:center;padding:15px;display:none;" class="demo-transfer">
+            <span style="display:inline-block;margin-bottom:10px;"><b>注意：一个字段的正序、倒叙只能选择一种，若选两个，则默认只取正序条件；文本输入框请勿手动修改</b></span>
+            <div id="ordercondition-select"></div>
+        </div>
+
+
+        <div id="div-record-reply" style="display: none;padding-right: 30px;">
+
+            <div class="layui-row">
+                <div class="layui-col-xs3" style="padding:7px;">
+                    <label class="prop-label">新试题ID</label>
+                    <span id="replyshitiid">新试题ID</span>
+                </div>
+                <div class="layui-col-xs3" style="padding:7px;">
+                    <label class="prop-label">旧试题ID</label>
+                    <span id="replyjiushitiid">旧试题ID</span>
+                </div>
+                <div class="layui-col-xs3" style="padding:7px;">
+                    <label class="prop-label">问题类型</label>
+                    <span id="replywentileixing">问题类型</span>
+                </div>
+                <div class="layui-col-xs3" style="padding:7px;">
+                    <label class="prop-label">反馈人</label>
+                    <span id="replyfankuiren">反馈人</span>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs4" style="padding:7px;">
+                    <label class="prop-label">反馈时间</label>
+                    <span id="replytime">反馈时间</span>
+                </div>
+                <div class="layui-col-xs3" style="padding:7px;">
+                    <label class="prop-label">知识点类型</label>
+                    <span id="replyknowledgetype">知识点类型</span>
+                </div>
+                <div class="layui-col-xs5" style="padding:7px;">
+                    <form class="layui-form" action="">
+                        <label class="prop-label-input prop-label">解决状态</label>
+                        <div class="layui-input-block" style="display: inline-block;margin: auto;">
+                            <select class="solveType-select" id="reply-solvetype-select" memo="数据库读取的方式加载">
+                                </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs12" style="padding:7px;">
+                    <label class="prop-label">知识点</label>
+                    <span id="replyreportknowledge">知识点</span>
+                </div>
+            </div>
+
+            <div id="sentenceresultshow">
+            </div>
+            <div class="layui-row">
+                <div class="layui-col-xs12" style="padding:7px;">
+                    <form class="layui-form" action="">
+                        <label class="prop-label-input prop-label">回复</label>
+                        <div class="layui-input-block" style="display: inline-block;margin: auto;width: 760px;">
+                            <textarea id="reply-content" class="layui-textarea"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="sentenceresultshow-item" style="display: none;">
+                <div class="layui-row material">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <label class="prop-label">识别材料</label>
+                        <span class="sentencematerial"></span>
+                    </div>
+                </div>
+                <div class="layui-row result">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <label class="prop-label">结果验证</label>
+                        <span class="sentenceresultitem"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="div-add-record" style="display: none;">
+            <div class="layui-tab" lay-filter="add-edit-tabcontrol">
+                <ul class="layui-tab-title">
+                </ul>
+                <div class="layui-tab-content">
+                </div>
+            </div>
+        </div>
+
+        <div id="popup-record-edit" style="display: none;padding-right: 30px;">
+            <form class="layui-form" action="">
+                <div class="layui-row">
+                    <div class="layui-col-xs4" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>试题ID</b></label>
+                            <div class="layui-input-block">
+                                <input id="shitiid" type="text" autocomplete="off" placeholder="" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>指派给</b></label>
+                            <div class="layui-input-block">
+                                <!-- <input type="text" autocomplete="off" placeholder="" class="layui-input"> -->
+                                <select id="zhipaigei" memo="数据库读取的方式加载">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>问题类型</b></label>
+                            <div class="layui-input-block">
+                                <!-- <input type="text" autocomplete="off" placeholder="" class="layui-input"> -->
+                                <select id="wentileixing" class="issueType-select" memo="数据库读取的方式加载">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>反馈句子</b></label>
+                            <div class="layui-input-block">
+                                <textarea id="fankuijuzi" autocomplete="off" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs8" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>知识点</b></label>
+                            <div class="layui-input-block">
+                                <input type="text" id="zhishidian" autocomplete="off" placeholder="" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>知识点类型</b></label>
+                            <div class="layui-input-block">
+                                <!-- <input type="text" autocomplete="off" placeholder="" class="layui-input"> -->
+                                <select id="zhishidianleixing" class="knowledgeType-select" memo="数据库读取的方式加载">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>备注</b></label>
+                            <div class="layui-input-block">
+                                <input id="beizhu" type="text" autocomplete="off" placeholder="" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"> <b>回复信息：</b> </label>
+                            <div class="layui-input-block" style="    padding-top: 10px;">
+                                <span id="span-huifu"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs12" style="padding:7px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><b>审核备注</b></label>
+                            <div class="layui-input-block">
+                                <input id="shenhebeizhu" type="text" autocomplete="off" placeholder="" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="popup-material" style="display: none;">
+            <div class="popup-tab-wrong-bar">
+                <div class="popup-report-knowledgewrong">
+                    <div class="layui-row popup-report-knowledge">
+                        <div class="layui-col-xs7" style="padding:7px;">
+                            <div class="layui-input-block layui-input-block-local" style="width:100%;">
+                                <input type="text" autocomplete="off" placeholder="输入单个知识点" class="layui-input popup-report-knowledgepoint">
+                            </div>
+                        </div>
+                        <div class="layui-col-xs2" style="padding:7px;">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <select class="popup-report-knowledgetype" memo="数据库读取的方式加载"></select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-col-xs2" style="padding:7px;">
+                            <input type="text" autocomplete="off" placeholder="输入备注" class="layui-input popup-report-knowledge-memo">
+                        </div>
+                        <div class="layui-col-xs1 edit-button" style="padding:7px;padding-left: 20px;">
+                            <div class="linetail-button linetail-button-sub" style="display: none;"><button class="layui-btn  layui-btn-warm layui-btn-xs"><i class="layui-icon layui-icon-subtraction"></i></button></div>
+                            <div class="linetail-button linetail-button-add"><button class="layui-btn  layui-btn-xs"><i class="layui-icon layui-icon-addition"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-tab-lose-bar">
+                <div class="popup-report-knowledgelose">
+                    <div class="layui-row popup-report-knowledge">
+                        <div class="layui-col-xs7" style="padding:7px;">
+                            <div class="layui-input-block layui-input-block-local" style="width:100%;">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="输入单个知识点" class="layui-input popup-report-knowledgepoint">
+                            </div>
+                        </div>
+                        <div class="layui-col-xs2" style="padding:7px;">
+                            <form class="layui-form" action="">
+                                <select class="popup-report-knowledgetype" memo="数据库读取的方式加载"></select>
+                            </form>
+                        </div>
+                        <div class="layui-col-xs2" style="padding:7px;">
+                            <input type="text" autocomplete="off" placeholder="输入备注" class="layui-input popup-report-knowledge-memo">
+                        </div>
+                        <div class="layui-col-xs1 edit-button" style="padding:7px;padding-left: 20px;">
+                            <div class="linetail-button linetail-button-sub" style="display: none;"><button class="layui-btn  layui-btn-warm layui-btn-xs"><i class="layui-icon layui-icon-subtraction"></i></button></div>
+                            <div class="linetail-button linetail-button-add"><button class="layui-btn  layui-btn-xs"><i class="layui-icon layui-icon-addition"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-tab-frame">
+                <div class="layui-row">
+                    <div class="layui-col-xs2" style="padding:7px;padding-bottom: 0px;">
+                        <!-- 试题id输入和反馈句子输入全局通用 -->
+                        <input type="text" class="layui-input popup-report-entityid" autocomplete="off" placeholder="试题ID" title="兼容新旧ID">
+                    </div>
+                    <div class="layui-col-xs10" style="padding:7px;padding-bottom: 0px;height: 120px;">
+                        <textarea placeholder="反馈句子信息" class="layui-textarea popup-report-sentence"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <!-- <div style="height: 291px; overflow-y: auto;"> -->
+                    <!-- 漏识别fieldset设置id，命名方式：fieldset-username-lose -->
+                    <fieldset class="layui-elem-field  layui-field-title" style="margin: 7px 0px 0px 0px;border-color: limegreen;">
+                        <legend style="font-size: medium;">漏识别</legend>
+                        <!-- <div class="layui-field-box lose-content selectup"> -->
+                        <div class="layui-field-box lose-content ">
+                        </div>
+                    </fieldset>
+                    <!-- 错识别fieldset设置id，命名方式：fieldset-username-wrong -->
+                    <fieldset class="layui-elem-field  layui-field-title" style="margin: 7px 0px 0px 0px;border-color: rgb(255, 2, 2);">
+                        <legend style="font-size: medium;">错识别</legend>
+                        <div class="layui-field-box wrong-content">
+                            <!-- <div class="layui-field-box wrong-content selectup"> -->
+
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © lancoo
+        </div>
+    </div>
+
+
+    <script type="text/html" id="solve-assistant">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" title="调用知识点识别接口，重新识别本页所选的“识别文本”，并文本方式显示“重测结果”【目前此功能仅支持句法知识点】" lay-event="recognizecheck">识别验证</button>
+        </div>
+    </script>
+    <script type="text/html" id="side-bar1">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script type="text/html" id="side-bar2">
+        <a class="layui-btn layui-btn-xs" lay-event="reply">回复</a>
+    </script>
+</body>
+<script src="jquery/jquery-3.5.1.js"></script>
+<script src="jquery/jquery.cookie.js"></script>
+<script src="js/moment/moment.js"></script>
+<script src="js/userinfo.js"></script>
+<script src='js/navigation.js'></script>
+<script src='js/navigation-8.js'></script>
+<script src="layui/layui.js"></script>
+<script src="js/xml2json/xml2json.js"></script>
+
+</html>

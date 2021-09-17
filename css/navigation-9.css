@@ -1,0 +1,33 @@
+.layui-input-block-local {
+    margin-left: 0px;
+}
+
+.prop-title {
+    padding-left: 3px;
+    border-left: solid rgb(90, 245, 63) 3px;
+    margin: 4px 0px;
+    display: inline-block;
+    font-size: medium;
+}
+
+.prop-content {
+    margin: 6px 0px;
+    margin-left: 10px;
+    display: inline-block;
+    font-size: medium;
+    background: honeydew;
+}
+
+.layui-tab-brief {
+    margin: auto;
+}
+
+.selectup .layui-form-select dl {
+    top: auto;
+    bottom: 36px;
+    max-height: 220px;
+}
+
+.layui-btn-sm {
+    margin: 4px;
+}

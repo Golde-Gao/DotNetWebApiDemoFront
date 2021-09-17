@@ -1,0 +1,53 @@
+.layui-input-block-local {
+    margin-left: 0px;
+}
+
+.prop-title {
+    padding-left: 3px;
+    border-left: solid rgb(90, 245, 63) 3px;
+    margin: 4px 0px;
+    display: inline-block;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.prop-label {
+    margin: 4px 3px 1px 20px;
+    padding-left: 3px;
+    border-left: solid rgb(11, 155, 250) 3px;
+    display: inline-block;
+    font-size: medium;
+    width: 110px;
+}
+
+.prop-label-input {
+    border-left: solid rgb(90, 245, 63) 3px;
+    float: left;
+}
+
+.prop-content {
+    margin: 6px 0px;
+    margin-left: 10px;
+    display: inline-block;
+    font-size: medium;
+    background: honeydew;
+}
+
+.layui-tab-brief {
+    margin: auto;
+}
+
+.selectup .layui-form-select dl {
+    top: auto;
+    bottom: 36px;
+    max-height: 220px;
+}
+
+.layui-btn-sm {
+    margin: 4px;
+}
+
+.button-searchbar {
+    margin-left: 8px;
+    display: inline-block;
+}
